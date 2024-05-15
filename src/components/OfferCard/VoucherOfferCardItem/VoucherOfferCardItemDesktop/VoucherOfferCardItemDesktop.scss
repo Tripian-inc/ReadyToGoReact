@@ -1,0 +1,188 @@
+@import '../../../../styles/themes/params.scss';
+
+.offerCard {
+  position: relative;
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  border-radius: 0.5rem;
+  background: #0d31ab;
+  cursor: pointer;
+  width: 100%;
+  position: relative;
+  z-index: 5;
+  height: 12.5rem;
+
+  .offerCardGeneralLeft {
+    width: 25%;
+    height: 100%;
+    min-width: 12.5rem;
+    .offerCardImgGeneral {
+      position: relative;
+      // min-height: 13rem;
+
+      .offerCardCampaignName {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 3rem;
+        text-align: center;
+        color: #fff;
+        z-index: 5;
+        background-color: var(--primary-color);
+        font-family: 'Brume';
+        border-bottom-left-radius: 0.5rem;
+      }
+
+      .offerCardImg {
+        .offerCardImage {
+          // max-height: 12rem;
+          border-top-left-radius: 0.5rem;
+          border-bottom-left-radius: 0.5rem;
+        }
+
+        .offerCardImageLazyLoading {
+          border-top-left-radius: 0.5rem;
+          border-bottom-left-radius: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .offerCardGeneralMid {
+    width: 100%;
+    overflow: hidden;
+    padding: 0 0.5rem;
+    border-radius: 0.25rem;
+    max-width: calc(100% - 12.5rem);
+
+    .offerCardTop {
+      display: flex;
+      justify-content: space-between;
+
+      .middle {
+        width: calc(100% - 6rem);
+
+        .offerCardName {
+          font-size: 1rem;
+          font-weight: 400;
+          line-height: 1.5rem;
+          margin-top: 0.5rem;
+          color: #fff;
+          width: calc(100% - 0.5rem);
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          display: -webkit-box;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .offerCardTitle {
+          font-size: 0.875rem;
+          margin-bottom: 0.5rem;
+          margin-top: 0.5rem;
+          color: #fff;
+          width: 100%;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          display: -webkit-box;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+
+      .offerDiscountWrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+
+        .offerCardCoupon {
+          margin-top: 0.5rem;
+          font-size: 0.875rem;
+          padding: 0.25rem;
+          background-color: #fff;
+          color: var(--primary-color);
+          width: fit-content;
+          min-width: 6rem;
+          text-align: center;
+        }
+
+        .offerCardButtons {
+          .optInText {
+            color: var(--text-primary-color);
+            background-color: #feb212;
+            width: fit-content;
+            margin-top: 0.25rem;
+            padding: 0.25rem;
+            font-size: 0.85rem;
+            min-width: 6rem;
+            text-align: center;
+          }
+
+          .redeemed {
+            padding: 0.25rem;
+            margin-top: 0.25rem;
+            color: white;
+            background-color: #feb212;
+            font-size: 0.75rem;
+          }
+        }
+      }
+    }
+
+    .offerCardCaption {
+      margin: 0.25rem 0;
+      background-color: #fff;
+      padding: 0.25rem;
+      display: flex;
+      font-size: 0.875rem;
+      color: var(--primary-color);
+
+      .offerCardDescContent {
+        display: flex;
+        align-items: center;
+        width: 100%;
+
+        .exclamationIcon {
+          padding-bottom: 0.25rem;
+          margin-right: 0.5rem;
+        }
+
+        .offerDesc {
+          /* overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap; */
+          display: block;
+          width: calc(100% - 1rem);
+        }
+      }
+    }
+
+    .offerCardTimeFrame {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+      color: #fff;
+      padding: 0.25rem;
+      font-size: 0.85rem;
+
+      .date {
+        display: block;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+    }
+
+    .offerType {
+      position: absolute;
+      bottom: 0.5rem;
+      right: 0.5rem;
+      font-size: 0.75rem;
+      color: #fff;
+    }
+  }
+}

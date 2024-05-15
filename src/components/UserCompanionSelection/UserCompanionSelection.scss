@@ -1,0 +1,91 @@
+@import '../../styles/themes/params.scss';
+
+.userCompModal {
+  min-width: 25rem !important;
+  max-width: 25rem !important;
+  background-color: var(--background-color);
+}
+
+.userCompanionContent {
+  padding-left: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  .userCompanionItem {
+    // width: 100%;
+    // position: relative;
+    display: inline-flex;
+    // margin: 0 0.5rem 0.5rem 0;
+    // background-color: #fff;
+    // padding: 0.5rem 0rem;
+    // margin: 0;
+    // &:hover {
+    //   background-color: #f5f5f5;
+    //   cursor: pointer;
+    //   width: 100%;
+    // }
+
+    .companionList {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1rem;
+      border-radius: 0.75rem;
+      background: var(--background-color);
+      .companionName {
+        font-size: 1rem;
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+.userCompanionAddButton {
+  width: 3rem;
+  height: 3rem;
+  border: 0.0625rem solid rgba(var(--text-primary-color-rgb), 0.25) !important;
+
+  &:hover {
+    border: 1px solid rgba(var(--text-primary-color-rgb), 0.75) !important;
+  }
+}
+
+.modalLoading {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.userCompanionModal {
+  width: 90%;
+  left: 5%;
+  padding: 0;
+}
+
+// .userCompanionAddButton {
+//   margin-right: 1rem;
+// }
+
+.userCompLeft {
+  width: calc(100% - 3rem);
+  padding: 0 0.75rem;
+}
+
+.userCompRight {
+  width: 3rem;
+  padding-left: 0.75rem;
+}
+
+@media screen and (min-width: $mobile-view-breakpoint) {
+  .userCompanionModal {
+    // width: 50%;
+    // left: 20%;
+    padding: 1rem;
+  }
+}

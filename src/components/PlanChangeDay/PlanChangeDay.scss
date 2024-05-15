@@ -1,0 +1,24 @@
+@import '../../styles/themes/params.scss';
+
+.dropdown {
+  width: 100%;
+  /* max-width: 9.35rem; */
+  border: 0.0625rem solid rgba(0, 0, 0, 0.23);
+  border-radius: 0.25rem;
+  background: url('./img/calendar.svg') no-repeat #fff;
+  background-position: left 0.5rem center;
+  background-size: 1rem;
+  /* padding: 0.0625rem 0; */
+  cursor: pointer;
+
+  > div {
+    border: 0 !important;
+    > select {
+      background-color: #fff !important;
+      padding: 0.538rem 2.25rem !important;
+    }
+  }
+  &:hover {
+    border-color: rgba(var(--text-primary-color-rgb), 0.75) !important;
+  }
+}

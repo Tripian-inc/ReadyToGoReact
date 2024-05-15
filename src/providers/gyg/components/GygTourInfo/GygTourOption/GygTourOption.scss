@@ -1,0 +1,63 @@
+@import '../../../../../styles/themes/params.scss';
+
+.mainDiv {
+  padding: 16px;
+  border: 2px solid var(--primary-color);
+  cursor: pointer;
+  display: block;
+  margin-bottom: 32px;
+  outline: none;
+  width: 100%;
+
+  .optionDiv {
+    margin: 0.75rem 0;
+
+    .feeText {
+      margin-top: 0.75rem;
+      color: var(--success-color);
+    }
+  }
+
+  .tourOptionHeader {
+    min-width: 2rem;
+  }
+
+  .parameters {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    text-transform: capitalize;
+  }
+
+  .totalPriceText {
+    font-weight: bold;
+  }
+
+  .totalPriceDiv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .savingRate {
+    color: var(--success-color);
+    font-weight: bold;
+  }
+
+  // .addToChartButton {
+  //   background-color: var(--primary-color) !important;
+  //   color: #fff !important;
+  //   min-width: 15rem;
+
+  //   &.disabled {
+  //     color: #fff;
+  //     background-color: rgba(var(--primary-color-rgb), 1) !important;
+  //     cursor: not-allowed;
+  //   }
+  // }
+}
+
+// @media screen and (min-width: $mobile-view-breakpoint) {
+//   .mainDiv {
+//     min-width: 66%;
+//   }
+// }

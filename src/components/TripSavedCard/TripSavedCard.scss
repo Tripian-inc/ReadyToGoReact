@@ -1,0 +1,214 @@
+.tripSavedCard {
+  width: 100%;
+  position: relative;
+  margin: 0.5rem 0 1rem;
+  border-radius: 0.1875rem;
+  background-color: #fff;
+  overflow: hidden;
+  box-shadow: 0 0.125rem 0.125rem 0 rgba(0, 0, 0, 0.14), 0 0.1875rem 0.0625rem -0.125rem rgba(0, 0, 0, 0.12), 0 0.0625rem 0.3125rem 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+
+  .cardImage {
+    position: relative;
+
+    &.cardImageBlackWhite {
+      > div:first-child {
+        filter: grayscale(1) !important;
+      }
+    }
+
+    > svg {
+      width: 100%;
+      height: inherit;
+    }
+
+    .tripImage {
+      height: 100%;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      // min-height: 12rem;
+      // min-width: 16rem;
+      // display: block;
+      // background-color: #eee;
+    }
+    .pastTripImage {
+      height: 100%;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      filter: var(--secondary-color);
+      -webkit-filter: grayscale(1);
+      filter: grayscale(1);
+      // min-height: 12rem;
+      // min-width: 16rem;
+      // display: block;
+      // background-color: #eee;
+    }
+    .cardTitle {
+      color: #fff;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      max-width: 100%;
+      padding: 0.5rem 1rem;
+      text-shadow: 0.0625rem 0.0625rem 0.0625rem black;
+      letter-spacing: 0.03125rem;
+    }
+
+    .howManyDays {
+      color: #fff;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      max-width: 100%;
+      padding: 0.5rem;
+      text-shadow: 0.0625rem 0.0625rem 0.0625rem black;
+      letter-spacing: 0.03125rem;
+    }
+
+    .buttons {
+      // position: absolute;
+      // right: 0;
+      // bottom: -1rem;
+
+      .editIcon {
+        right: 4.25rem;
+        bottom: -1rem;
+        position: absolute;
+        // margin-right: 1rem;
+        background-image: url(./img/outside.png);
+        background-size: 1.25rem;
+        background-repeat: no-repeat;
+        background-color: #2196f3;
+        border: none;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background-position: center;
+        cursor: pointer;
+      }
+      .deleteIcon {
+        right: 1rem;
+        bottom: -1rem;
+        position: absolute;
+        // margin-right: 1rem;
+        background-image: url(./img/delete.png);
+        background-size: 1.25rem;
+        background-repeat: no-repeat;
+        background-color: var(--danger-color);
+        border: none;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background-position: center;
+        cursor: pointer;
+
+        &.deleteIconPosition {
+          right: 1rem !important;
+        }
+      }
+
+      .dowloadIcon {
+        margin-right: 1rem;
+        background-image: url(./img/calendar.png);
+        background-size: 1.5rem;
+        background-repeat: no-repeat;
+        background-color: #51852b;
+        border: none;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background-position: center;
+        cursor: pointer;
+
+        &.dowloadIconLoading {
+          background-image: none;
+        }
+      }
+
+      .shareIcon {
+        right: 7.5rem;
+        bottom: -1rem;
+        position: absolute;
+        // margin-right: 1rem;
+        background-image: url(./img/share.svg);
+        background-size: 1.25rem;
+        background-repeat: no-repeat;
+        background-color: #51852b;
+        border: none;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        background-position: center;
+        cursor: pointer;
+      }
+    }
+
+    [data-tooltip]:before {
+      content: attr(data-tooltip);
+      display: none;
+      position: absolute;
+      background: #bbb;
+      color: #fff;
+      padding: 4px 8px;
+      font-size: 14px;
+      line-height: 1.4;
+      min-width: 100px;
+      text-align: center;
+      border-radius: 4px;
+    }
+    [data-tooltip-position='top']:before {
+      left: 50%;
+      -ms-transform: translateX(-50%);
+      -moz-transform: translateX(-50%);
+      -webkit-transform: translateX(-50%);
+      transform: translateX(-80%);
+    }
+
+    [data-tooltip-position='top']:before {
+      bottom: 100%;
+      margin-bottom: 6px;
+    }
+    [data-tooltip]:after {
+      content: '';
+      display: none;
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-color: transparent;
+      border-style: solid;
+    }
+    [data-tooltip-position='top']:after {
+      left: 50%;
+      margin-left: -6px;
+    }
+    [data-tooltip-position='top']:after {
+      bottom: 100%;
+      border-width: 6px 6px 0;
+      border-top-color: #bbb;
+    }
+
+    [data-tooltip]:hover:before,
+    [data-tooltip]:hover:after {
+      display: block;
+      z-index: 50;
+    }
+  }
+
+  .cardContent {
+    text-align: left;
+    color: black;
+    p {
+      margin: 0;
+      padding: 0.9375rem 1rem;
+      font-weight: bold;
+      font-size: 0.875rem;
+    }
+  }
+}

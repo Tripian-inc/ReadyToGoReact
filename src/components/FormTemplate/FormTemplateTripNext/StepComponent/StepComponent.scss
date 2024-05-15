@@ -1,0 +1,27 @@
+@import '../../../../styles/themes/params.scss';
+
+.stepComponent {
+  margin: 0 !important;
+  .stepCompLeft {
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+  }
+
+  .stepCompRight {
+    margin-bottom: 0 !important;
+  }
+}
+
+@media screen and (min-width: $mobile-view-breakpoint) {
+  .stepComponent {
+    margin: 1.25rem 0 !important;
+    .stepCompLeft {
+      margin-bottom: 1.25rem !important;
+      padding: 0 0.75rem !important;
+    }
+
+    .stepCompRight {
+      margin-bottom: 1.25rem !important;
+    }
+  }
+}

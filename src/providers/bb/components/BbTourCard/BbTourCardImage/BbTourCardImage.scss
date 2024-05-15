@@ -1,0 +1,10 @@
+.bbTourCardImage {
+  position: relative;
+  cursor: pointer;
+  height: 266px;
+
+  img {
+    height: 100%;
+    object-fit: cover;
+  }
+}

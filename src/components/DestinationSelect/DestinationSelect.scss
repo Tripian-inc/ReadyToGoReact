@@ -1,0 +1,95 @@
+:global {
+  .destinationSelect {
+    width: 100%;
+    display: inline-block;
+    color: black;
+    border-color: var(--primary-color);
+    border-radius: 0.25rem;
+
+    .destinationSelect__control {
+      border: 0.0625rem solid rgba(var(--text-primary-color-rgb), 0.25);
+      border-radius: 0.75rem;
+      box-shadow: none;
+      font-size: 0.875rem;
+      background: #f5f5f5;
+      height: 3rem;
+
+      &:hover {
+        border-color: rgba(var(--text-primary-color-rgb), 0.75);
+      }
+      &:focus {
+        border-color: rgba(var(--text-primary-color-rgb), 0.75);
+      }
+      &:focus-within {
+        border-color: rgba(var(--text-primary-color-rgb), 0.75);
+      }
+
+      .destinationSelect__value-container {
+        padding: 0.32rem 0.875rem;
+        line-height: 1.1875rem;
+
+        .css-1g6gooi {
+          padding: 0;
+          margin: 0;
+        }
+
+        .destinationSelect__placeholder {
+          line-height: 1.1875rem;
+        }
+        .destinationSelect__single-value {
+          line-height: 1.1875rem;
+        }
+      }
+    }
+
+    .destinationSelect__menu {
+      margin: 0;
+      padding: 0;
+      /* color: black; */
+      width: inherit;
+      z-index: 3;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      font-size: 0.875rem;
+      background: #f5f5f5;
+
+      .destinationSelect__menu-list {
+        margin: 0;
+        padding: 0;
+        background: #f5f5f5;
+
+        .destinationSelect__option {
+          padding: 0.75rem 0rem 0.75rem 0.875rem;
+          margin: 0;
+          background: #f5f5f5;
+          border-bottom: 1px solid #bfbfbf;
+        }
+
+        .destinationSelect__option--is-selected {
+          background: #fff;
+          color: var(--text-primary-color);
+        }
+
+        .destinationSelect__option--is-focused {
+          background-color: #ffffff;
+        }
+      }
+    }
+  }
+}
+
+.optionLabel {
+  display: flex;
+  align-items: center;
+
+  .optionLabelText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 0.75rem;
+
+    :first-child {
+      font-weight: 600;
+    }
+  }
+}

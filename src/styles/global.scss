@@ -1,0 +1,76 @@
+@import './themes/params.scss';
+:global {
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+    outline: none;
+  }
+
+  html,
+  body {
+    color: var(--text-primary-color);
+  }
+
+  /**
+  *
+  * Header
+  *
+  */
+  @import './global/header.scss';
+
+  .hide,
+  .hide-s {
+    display: none;
+  }
+
+  @media screen and (min-width: $mobile-view-breakpoint) {
+    .hide-s {
+      display: initial !important;
+    }
+    .hide-m {
+      display: none;
+    }
+  }
+
+  /**
+  *
+  * Container
+  *
+  */
+  .container {
+    margin: 0 auto;
+    /* max-width: 1280px; */
+    width: 90%;
+  }
+  @media only screen and (min-width: $mobile-view-breakpoint) {
+    .container {
+      width: 70%;
+    }
+  }
+
+  /**
+  *
+  * Center
+  *
+  */
+  .center {
+    justify-content: space-around;
+    text-align: center;
+  }
+
+  /**
+  *
+  * Row Col
+  *
+  */
+  @import './global/row-col.scss';
+
+  /**
+  *
+  * Margin Padding
+  *
+  */
+  @import './global/margin.scss';
+  @import './global/padding.scss';
+}

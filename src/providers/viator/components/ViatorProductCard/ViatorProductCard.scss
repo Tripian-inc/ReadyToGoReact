@@ -1,0 +1,34 @@
+.viatorProductCard {
+  // height: 400px;
+  max-width: 25rem;
+  width: 70vw;
+  border: 0px solid var(--secondary-color);
+  border-radius: 0.875rem;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px !important;
+  overflow: hidden !important;
+  position: relative;
+  margin: 0 8px 6px;
+  background-color: #d0d0d033;
+}
+
+.providerName {
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+
+  .favicon {
+    background-image: url('./favicon-viator.png');
+    background-size: contain;
+    display: inline-block;
+    background-repeat: no-repeat;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .companyName {
+    opacity: 0.5;
+    /* color: #434b5599; */
+    font-weight: bold;
+    margin-left: 0.35rem;
+  }
+}

@@ -1,0 +1,38 @@
+.favorite_icon_button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-basis: auto;
+  flex-direction: column;
+  flex-shrink: 0;
+  padding: 0.625rem;
+  outline-style: none;
+
+  .favorite_icon_button_content {
+    background-color: rgba(var(--text-primary-color-rgb), 0.77);
+    height: 2.5rem;
+    width: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1px solid #000;
+
+    .favorite_svg_wrapper {
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      color: #fff;
+
+      .favorite_svg {
+        height: 1.5em;
+        color: #fff;
+        user-select: none;
+        fill: #000;
+      }
+    }
+  }
+}

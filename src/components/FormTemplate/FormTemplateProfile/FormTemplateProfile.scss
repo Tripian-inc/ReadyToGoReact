@@ -1,0 +1,25 @@
+@import '../../../styles/themes/params.scss';
+
+.updateLoading {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.userUpdateForm {
+  position: relative;
+}
+
+.passwordChangeModal {
+  min-width: 80%;
+  background-color: var(--background-color);
+}
+
+@media screen and (min-width: $mobile-view-breakpoint) {
+  .passwordChangeModal {
+    min-width: 40%;
+  }
+}

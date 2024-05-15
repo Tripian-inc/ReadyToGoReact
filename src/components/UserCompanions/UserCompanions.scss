@@ -1,0 +1,68 @@
+.userCompanionTable {
+  width: 100%;
+  display: table;
+  background-color: var(--background-color);
+  border-color: var(--primary-color);
+
+  .userCompanionButtons {
+    display: flex;
+    justify-content: space-evenly;
+    svg {
+      fill: white;
+    }
+    .editButton {
+      background-image: url(./img/correct.png);
+      background-size: 1.25rem;
+
+      background-repeat: no-repeat;
+      border: none;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background-position: center;
+      cursor: pointer;
+    }
+    .deleteButton {
+      background-image: url(./img/close.png);
+      background-size: 1.25rem;
+
+      background-repeat: no-repeat;
+      border: none;
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      background-position: center;
+      cursor: pointer;
+    }
+  }
+
+  .actionLoading {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+  }
+
+  tbody > tr {
+    background-color: hsla(0, 0%, 94.9%, 0.5);
+    color: var(--text-primary-color);
+  }
+
+  td,
+  th {
+    padding: 15px 15px;
+    display: table-cell;
+    text-align: left;
+    vertical-align: middle;
+  }
+
+  .delete {
+    text-align: center !important;
+  }
+
+  .emptyMessage {
+    text-align: center !important;
+  }
+}

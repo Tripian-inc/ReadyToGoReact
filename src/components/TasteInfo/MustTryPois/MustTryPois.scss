@@ -1,0 +1,18 @@
+.mustTryPois {
+  /* position: relative;
+  width: 100%;
+  padding: 1rem 0 0 0rem; */
+  border-top: 0.0625rem solid rgba(var(--text-primary-color-rgb), 0.25);
+
+  .mustTryPoisList {
+    list-style-type: none;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+/* @media screen and (min-width: $mobile-view-breakpoint) {
+  .mustTryPois {
+    padding: 1rem 0 0 1rem;
+  }
+} */

@@ -1,0 +1,72 @@
+@import '../../../../styles/themes/params.scss';
+
+.radioButtonBox {
+  /* .radioButton-base */
+  cursor: pointer;
+  // display: inline-flex;
+  align-items: center;
+  // margin-left: -8px;
+  // margin-right: 16px;
+  color: var(--text-primary-color);
+  // width: 200px;
+  // height: 200px;
+  border-radius: 15px;
+  // flex-direction: row-reverse;
+  background-color: var(--background-color);
+  border: 0.0625rem solid rgba(var(--text-primary-color-rgb), 0.25);
+  // justify-content: center;
+  flex: 1;
+  width: 100%;
+  padding: 0 0.5rem 0 1rem;
+
+  &.checked {
+    background: var(--secondary-color);
+    color: var(--primary-color);
+  }
+
+  &:hover {
+    border: 1px solid rgba(var(--text-primary-color-rgb), 0.75);
+  }
+
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .span1 {
+      color: inherit;
+      cursor: pointer;
+      outline: 0;
+      position: relative;
+      padding: 12px 10px;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+
+      > input {
+        display: none;
+      }
+
+      .checked {
+        fill: var(--primary-color);
+      }
+    }
+
+    .span2 {
+      width: 100%;
+      display: block;
+      padding-right: 1rem;
+      font-size: 1rem;
+      letter-spacing: 0.00938em;
+
+      .text {
+        font-weight: 500;
+      }
+    }
+  }
+
+  .description {
+    padding-bottom: 1rem;
+    font-size: 1rem;
+  }
+}

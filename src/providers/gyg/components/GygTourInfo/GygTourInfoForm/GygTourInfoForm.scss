@@ -1,0 +1,85 @@
+@import '../../../../../styles/themes/params.scss';
+
+.gygTourInfoForm {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  padding: 1rem;
+  background: #1a2b49;
+  width: 100%;
+  border-radius: 0.25rem;
+
+  .warningMessage {
+    width: 100%;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .gygTourInfoFormHeader {
+    color: #fff;
+    margin: 0 0 0.5rem 0.5rem;
+  }
+
+  .gygTourInfoFormList {
+    display: block;
+    align-items: center;
+    // justify-content: space-between;
+    list-style-type: none;
+    padding-left: 0;
+    width: 100%;
+
+    .gygTourInfoFormListItem {
+      position: relative;
+      margin: 0 0.5rem;
+    }
+
+    .gygTourInfoPersonAge {
+      position: relative;
+      margin: 0.5rem 0;
+      color: #fff;
+      width: 100%;
+    }
+
+    .gygTourInfoPersonCount {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: #fff;
+      border: 1px solid #dbdbdb;
+      color: #000;
+      font-size: 0.9125rem;
+      border-radius: 2px;
+      padding: 0rem 1rem;
+      .gygTourInfoPersonCountText {
+        padding: 0 0.3125rem;
+        margin: 0;
+      }
+      &:hover {
+        border-color: rgba(var(--text-primary-color-rgb), 0.8);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $mobile-view-breakpoint) {
+  .gygTourInfoForm {
+    width: fit-content;
+    // min-width: 66%;
+    padding: 1rem;
+
+    .gygTourInfoFormList {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+
+      .gygTourInfoPersonAge {
+        position: absolute;
+        bottom: -1.25rem;
+        margin: 0;
+        padding-left: 0.5rem;
+      }
+    }
+  }
+}

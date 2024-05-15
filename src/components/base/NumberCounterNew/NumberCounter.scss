@@ -1,0 +1,39 @@
+.numberCounter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.25rem 1rem;
+  min-width: 12rem;
+  border-radius: 0.75rem;
+  color: black;
+  border: 0.0625rem solid rgba(var(--text-primary-color-rgb), 0.25);
+  background-color: #f5f5f5;
+
+  .header {
+    font-size: 0.875rem;
+  }
+  &:focus {
+    border: 1px solid rgba(var(--text-primary-color-rgb), 0.75);
+  }
+
+  &:hover {
+    border: 1px solid rgba(var(--text-primary-color-rgb), 0.75);
+  }
+
+  .numberInput {
+    display: flex;
+    align-items: center;
+    svg {
+      fill: black !important;
+    }
+  }
+
+  .number {
+    display: inline-block;
+    color: black;
+    min-width: 1rem;
+    /* font-size: 1.125rem; */
+    text-align: center;
+    font-weight: 600;
+  }
+}

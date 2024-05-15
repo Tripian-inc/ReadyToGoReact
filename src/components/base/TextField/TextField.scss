@@ -1,0 +1,58 @@
+.inputBaseRoot {
+  position: relative;
+  cursor: text;
+  display: inline-flex;
+  font-size: 1rem;
+  box-sizing: border-box;
+  align-items: center;
+  line-height: 1.1875rem;
+  border-radius: 0.75rem;
+  height: 3rem;
+  color: black;
+  border: 0.0625rem solid rgba(var(--text-primary-color-rgb), 0.25);
+  transition: border-color 500ms ease;
+  width: 100%;
+  overflow: hidden;
+
+  &:hover {
+    border: 0.0625rem solid rgba(var(--text-primary-color-rgb), 0.75);
+  }
+  &:focus-within {
+    /* border-color: #000; */
+    border: 0.0625rem solid rgba(var(--text-primary-color-rgb), 0.75);
+  }
+
+  .inputBase {
+    font: inherit;
+    color: currentColor;
+    width: 100%;
+    border: 0;
+    height: 3rem;
+    /* height: 1.04175rem; */
+    margin: 0;
+    display: block;
+    outline: none;
+    min-width: 0;
+    background-color: #f5f5f5;
+    box-sizing: content-box;
+    -webkit-tap-highlight-color: transparent;
+
+    /* line-height: 1.75; */
+    padding: 0.5625rem 0.875rem;
+
+    &.default {
+      font-size: 0.875rem;
+      padding: 0.5625rem 0.875rem;
+    }
+
+    &.small {
+      font-size: 0.8125rem;
+      padding: 0.3755rem 0.875rem; /* 0.4375rem 0.875rem - 0.0625rem border; */
+    }
+
+    &.large {
+      font-size: 0.9375rem;
+      padding: 0.7275rem 0.875rem;
+    }
+  }
+}

@@ -1,0 +1,92 @@
+:global {
+  .trpReactCreatableSelectMulti {
+    width: 100%;
+    display: inline-block;
+    color: black;
+    border-color: var(--primary-color);
+    border-radius: 0.25rem;
+
+    .trpReactCreatableSelectMulti__control {
+      border: 0.0625rem solid rgba(var(--text-primary-color-rgb), 0.25);
+      border-radius: 0.75rem;
+      box-shadow: none;
+      font-size: 0.875rem;
+      background: #f5f5f5;
+
+      &:hover {
+        border-color: rgba(var(--text-primary-color-rgb), 0.75);
+      }
+      &:focus {
+        border-color: rgba(var(--text-primary-color-rgb), 0.75);
+      }
+      &:focus-within {
+        border-color: rgba(var(--text-primary-color-rgb), 0.75);
+      }
+
+      .trpReactCreatableSelectMulti__value-container {
+        display: flex;
+        align-items: center;
+        padding: 0.594rem 0.35rem;
+        line-height: 1.1875rem;
+
+        .css-1g6gooi {
+          padding: 0;
+          margin: 0;
+        }
+
+        .trpReactCreatableSelectMulti__placeholder {
+          line-height: 1.1875rem;
+        }
+        .trpReactCreatableSelectMulti__single-value {
+          line-height: 1.1875rem;
+        }
+      }
+    }
+
+    /*    .trpReactCreatableSelectMulti__input {
+      min-width: 20vw !important;
+      padding-left: 0.5rem !important;
+    } */
+
+    .trpReactCreatableSelectMulti__menu {
+      margin: 0;
+      padding: 0;
+      /* color: black; */
+      width: inherit;
+      z-index: 3;
+      border-radius: 0.75rem;
+      overflow: hidden;
+      font-size: 0.875rem;
+      background: #f5f5f5;
+
+      .trpReactCreatableSelectMulti__menu-list {
+        margin: 0;
+        padding: 0;
+        background: #f5f5f5;
+
+        .trpReactCreatableSelectMulti__option {
+          padding: 0.75rem 0rem 0.75rem 0.875rem;
+          margin: 0;
+          background: #f5f5f5;
+        }
+
+        .trpReactCreatableSelectMulti__option--is-selected {
+          // background: rgba(var(--text-primary-color-rgb), 0.25) !important;
+          background-color: #ffffff;
+          color: #000;
+        }
+
+        .trpReactCreatableSelectMulti__option--is-focused {
+          // background-color: rgba(var(--text-primary-color-rgb), 0.25);
+          // color: #fff;
+          background-color: #ffffff;
+          color: #000;
+        }
+      }
+    }
+  }
+}
+
+.poiSearchAutoComplete {
+  width: calc(100% - 12.5rem);
+}

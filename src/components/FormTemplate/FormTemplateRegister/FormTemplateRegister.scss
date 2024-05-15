@@ -1,0 +1,65 @@
+@import '../../../styles/themes/params.scss';
+
+.registerLoading {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+}
+
+form {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+}
+
+.errorMessage {
+  color: var(--primary-color);
+}
+
+.registerButton {
+  width: 100%;
+  box-shadow: none !important;
+  // height: 2.5rem !important;
+  // font-weight: 600 !important;
+}
+
+.recaptcha {
+  transform: scale(0.85);
+}
+.termOfUse {
+  display: flex;
+  align-items: center;
+
+  .termOfUseCheckBox {
+    fill: var(--primary-color) !important;
+  }
+  .termOfUseText {
+    font-size: 0.875rem;
+    color: #6b6b6b;
+
+    .termsOfUseButton {
+      padding-left: 0.125rem;
+      padding-bottom: 0.5rem;
+      text-decoration: underline;
+      font-weight: 500;
+    }
+  }
+}
+
+.termsOfUseModal {
+  padding: 3rem 1rem;
+}
+
+@media screen and (min-width: $mobile-view-breakpoint) {
+  .recaptcha {
+    transform: unset;
+  }
+}

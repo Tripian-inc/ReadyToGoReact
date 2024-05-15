@@ -1,0 +1,83 @@
+.bbTourInfoGallery {
+  padding: 1rem 0.5rem;
+  border-radius: 0.5rem;
+  background: var(--background-color);
+  box-shadow: 0 7px 33px 0 hsla(0, 0%, 78%, 0.5);
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+
+  .bbTourInfoImageContent {
+    position: relative;
+    overflow: hidden;
+    padding: 0 0.5rem;
+  }
+
+  .bbTourInfoImg {
+    .bbTourInfoImgDiv {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50%;
+
+      svg {
+        width: 100%;
+        opacity: 0;
+      }
+    }
+  }
+
+  :global {
+    .slick-prev {
+      width: 40px;
+      height: 40px;
+      left: 5px;
+      z-index: 1;
+      filter: drop-shadow(0 3px 2px #000);
+
+      &:before {
+        font-size: 35px;
+      }
+    }
+
+    .slick-next {
+      width: 40px;
+      height: 40px;
+      right: 5px;
+      filter: drop-shadow(0 3px 2px #000);
+
+      &:before {
+        font-size: 35px;
+      }
+    }
+
+    .slick-track {
+      .slick-center {
+        transform: scale(1.1);
+      }
+
+      .slick-slide:not(.slick-active) {
+        margin: 1.25rem 0;
+      }
+
+      .slick-active {
+        padding: 1.25rem 0.5rem;
+      }
+    }
+
+    .slick-dots {
+      bottom: -0.5rem;
+      li {
+        z-index: 1;
+      }
+      li.slick-active button:before {
+        color: #fff;
+        opacity: 1;
+      }
+      li button:before {
+        color: #fff;
+        font-size: 10px;
+        filter: drop-shadow(0 3px 2px #000);
+      }
+    }
+  }
+}

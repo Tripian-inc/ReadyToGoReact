@@ -1,0 +1,165 @@
+@import '../../../../styles/themes/params.scss';
+
+.bbCarRentInfo {
+  width: 100%;
+  overflow: hidden !important;
+  position: relative;
+  font-size: 0.9rem;
+
+  .desc {
+    p {
+      margin: 0 !important;
+    }
+  }
+
+  .shortDesc {
+    text-align: justify;
+
+    input[type='checkbox'] {
+      display: none;
+    }
+    .descContent {
+      cursor: pointer;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      padding: 0 1rem 0 0;
+    }
+    .descToggle:checked + .descContent {
+      display: block;
+    }
+  }
+
+  .content {
+    position: relative;
+    display: block !important;
+
+    .img {
+      width: 100%;
+    }
+  }
+
+  :global {
+    .slick-prev {
+      width: 40px;
+      height: 40px;
+      left: 5px;
+      z-index: 1;
+      filter: drop-shadow(0 3px 2px #000);
+
+      &:before {
+        font-size: 35px;
+      }
+    }
+
+    .slick-next {
+      width: 40px;
+      height: 40px;
+      right: 5px;
+      filter: drop-shadow(0 3px 2px #000);
+
+      &:before {
+        font-size: 35px;
+      }
+    }
+
+    .slick-dots {
+      top: 10px;
+      bottom: unset;
+      li {
+        z-index: 1;
+      }
+      li.slick-active button:before {
+        color: #fff;
+        opacity: 1;
+      }
+      li button:before {
+        color: #fff;
+        font-size: 10px;
+        filter: drop-shadow(0 3px 2px #000);
+      }
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .imageOwner {
+    font-size: 0.625rem;
+    color: #fff;
+    text-shadow: 0.0625rem 0.0625rem 0.125rem #000;
+    position: absolute;
+    left: 0.5rem;
+    bottom: 0.5rem;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  .title {
+    text-align: center;
+    margin: 1rem 0 0 0;
+    color: var(--primary-color);
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 0.2rem 0.6rem 0.3rem;
+    margin: 0.125rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25em;
+    background-color: rgba(var(--primary-color-rgb), 0.75);
+    color: #fff;
+  }
+
+  .roomOffer {
+    border-radius: 0.2rem;
+    border: 2px solid var(--success-color);
+    padding: 1rem;
+  }
+
+  .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: none;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    filter: drop-shadow(0px 3px 2px #000);
+  }
+
+  img {
+    width: 100%;
+    height: 400px;
+    /* min-height: 400px; */
+    object-fit: cover;
+  }
+}
+
+@media screen and (min-width: $mobile-view-breakpoint) {
+  .bbCarRentInfo {
+    height: 100%;
+
+    :global {
+      .slick-slider {
+        height: 100%;
+      }
+    }
+
+    .content {
+      .img {
+        height: 400px;
+      }
+    }
+  }
+}

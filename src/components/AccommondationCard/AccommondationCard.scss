@@ -1,0 +1,65 @@
+.main {
+  display: flex;
+  align-items: center;
+  border: 0.0625rem solid #ffffff;
+  border-radius: 0.5rem;
+  position: relative;
+  // margin: 15px 0px 0px 0px;
+  overflow: hidden;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  width: 100%;
+
+  &:hover {
+    background-color: #ffffff;
+  }
+
+  .content {
+    margin: 0;
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-right: 2px solid #f5f5f5;
+    align-items: center;
+    display: flex;
+
+    .providerImg {
+      height: 150px;
+      width: 150px;
+      object-fit: cover;
+    }
+    .contentImg {
+      background-image: url(./img/homebase.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+      border: none;
+      position: relative;
+      height: 5rem;
+      width: 150px;
+    }
+  }
+
+  .information {
+    width: calc(100% - 10rem);
+    color: black;
+    padding: 0.625rem;
+
+    > h4 {
+      display: block;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .accommodationAdress {
+      span {
+        font-size: 0.75rem;
+        -webkit-line-clamp: 2;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+      }
+    }
+  }
+}

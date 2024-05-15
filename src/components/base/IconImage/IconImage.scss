@@ -1,0 +1,29 @@
+.iconImage {
+  width: 100%;
+  height: 100%;
+
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-position: center;
+  background-size: contain;
+
+  &.FAVORITES {
+    background-image: url('./img/favorites.svg');
+  }
+
+  &.BOOKINGS {
+    background-image: url('./img/bookings.png');
+  }
+
+  &.TOUR {
+    background-image: url('./img/local_experiences.png');
+  }
+
+  &.SEARCH {
+    background-image: url('./img/explore_places.png');
+  }
+
+  &.OFFER {
+    background-image: url('./img/offer.svg');
+  }
+}

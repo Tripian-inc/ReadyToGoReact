@@ -1,0 +1,12 @@
+$fontWeight: bold;
+$emptyColor: rgba(var(--text-primary-color-rgb), 0.8);
+$fillColor: var(--text-primary-color);
+
+.empty {
+  font-weight: $fontWeight;
+  color: $emptyColor;
+}
+.fill {
+  font-weight: $fontWeight;
+  color: $fillColor;
+}

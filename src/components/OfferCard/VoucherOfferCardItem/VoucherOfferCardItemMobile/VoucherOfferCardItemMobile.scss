@@ -1,0 +1,134 @@
+.offerCard {
+  margin: 1rem auto 2rem;
+  width: 380px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+  z-index: 5;
+
+  .offerCardImgGeneral {
+    /* border-radius: 0.5rem;
+    position: relative; */
+    height: 23rem;
+
+    .offerCardImage {
+      border-radius: 1.25rem;
+    }
+
+    .offerCardCampaignName {
+      position: relative;
+      margin-top: -3rem;
+      display: flex;
+      justify-content: end;
+
+      .offerCardCampaignNameText {
+        padding: 0.25rem 0.5rem;
+        text-align: center;
+        color: #fff;
+        font-size: 0.75rem;
+        background-color: var(--primary-color);
+        font-family: Brume;
+      }
+    }
+  }
+
+  .offerCardBottom {
+    background: #fff;
+    position: relative;
+    border-radius: 1rem;
+    padding: 1rem;
+    width: 100%;
+    margin-top: -1rem;
+
+    .offerCardName {
+      font-size: 1.25rem;
+      font-weight: 400;
+      line-height: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #000;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: block;
+      width: calc(100% - 5.25rem);
+      height: fit-content;
+    }
+
+    .offerCardTitle {
+      font-size: 0.875rem;
+      font-weight: 400;
+      line-height: 1.5rem;
+      color: #000;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      display: block;
+    }
+
+    .offerType {
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      color: #49a0ff;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .offerCardCaption {
+      padding: 0 0 0.25rem 0;
+      display: flex;
+      align-items: center;
+      font-size: 0.875rem;
+      color: var(--primary-color);
+      width: 100%;
+
+      .exclamationIcon {
+        padding-bottom: 0.25rem;
+        margin-right: 0.5rem;
+      }
+
+      .offerDesc {
+        /* overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; */
+        display: block;
+        width: calc(100% - 1rem);
+      }
+    }
+
+    .offerCardDate {
+      color: #000;
+      font-size: 0.875rem;
+      font-weight: 400;
+      line-height: 20px;
+    }
+
+    .loadingWrapper {
+      width: 5rem;
+      border-radius: 0.5rem;
+      padding: 0.25rem;
+      background-color: var(--primary-color);
+      margin-left: 35%;
+    }
+
+    .offerButtonsContent {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+
+      .offerButton {
+        background-color: var(--primary-color);
+        color: #fff;
+        padding: 0.5rem 1rem;
+      }
+
+      .redeemed {
+        margin-top: 0.25rem;
+        font-size: 1rem;
+      }
+    }
+  }
+}

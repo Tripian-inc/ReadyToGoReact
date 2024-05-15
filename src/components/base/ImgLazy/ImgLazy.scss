@@ -1,0 +1,61 @@
+.imgLazy {
+  display: grid;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+
+  .imgLazyImgDefault {
+    width: 100%;
+    // object-fit: cover;
+  }
+
+  .objectFitContain {
+    object-fit: contain;
+    height: 100%;
+  }
+
+  .imgLazyImg {
+    filter: blur(5px);
+  }
+
+  .imgLazySvg {
+    width: 100%;
+  }
+
+  .bgBlur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    filter: blur(4px);
+    -webkit-filter: blur(4px);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .imgLazyLoading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffffaa;
+    // border: 1px solid #ccccccaa;
+    box-sizing: border-box;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+
+    .imgLazyLoadingThumbnails {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

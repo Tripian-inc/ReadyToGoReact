@@ -1,0 +1,14 @@
+.progressAppLoading {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: #38363638;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .progressLoadingWrapper {
+    width: 50%;
+  }
+}

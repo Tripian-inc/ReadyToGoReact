@@ -1,0 +1,53 @@
+.walking {
+  border-left: 4px dotted #4285f4;
+  height: 20px;
+  fill: var(--text-primary-color);
+}
+.cycling {
+  border-left: 4px solid #37a140;
+  height: 20px;
+  fill: var(--text-primary-color);
+}
+.driving {
+  border-left: 6px double #4285f4;
+  fill: var(--text-primary-color);
+  height: 20px;
+}
+.icon {
+  display: flex;
+  margin-left: 5px;
+  fill: var(--text-primary-color);
+}
+
+.content {
+  align-items: center;
+  display: flex;
+  // margin: 0.75rem 0rem 0rem 0.75rem;
+  .directionInfo {
+    width: 230px;
+    font-size: 0.75rem;
+    margin-left: 0.5rem;
+    font-weight: bold;
+    .duration {
+      color: #4285f4;
+      font-style: italic;
+    }
+    .durationCycling {
+      color: var(--text-primary-color);
+      font-style: italic;
+    }
+  }
+  .uber {
+    width: 100%;
+    outline: 0;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    .bookaride {
+      margin-left: 10px;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+  }
+}

@@ -1,0 +1,226 @@
+@import '../../../styles/themes/params.scss';
+
+.poiHeader {
+  display: flex;
+  align-items: center;
+  padding: 12px 12px 0;
+
+  .poiTitle {
+    color: var(--text-primary-color);
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 38.4px;
+    flex: 1;
+  }
+}
+
+.favorite {
+  /* position: absolute;
+  left: 10px;
+  top: 10px; */
+  .favoriteButton {
+    cursor: pointer;
+    border: none;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: #f5f5f5;
+    overflow: hidden;
+    padding: 10px;
+  }
+}
+
+.web {
+  display: flex;
+  align-items: center;
+  padding-left: 6px;
+  line-height: 1.5rem;
+  width: 100%;
+
+  a {
+    display: block;
+    text-decoration: underline !important;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: calc(100% - 3rem);
+  }
+}
+
+.addRemoveReplaceIcon {
+  background-repeat: no-repeat;
+  background-position: 50%;
+  cursor: pointer;
+  border: none;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #f5f5f5;
+  overflow: hidden;
+  padding: 10px;
+  margin-right: 1rem;
+}
+
+.addRemoveReplaceIcon.addIcon {
+  background-image: url(../img/add-black.png);
+  background-size: 40%;
+}
+
+.addRemoveReplaceIcon.replaceIcon {
+  background-image: url(../img/replace-black.png);
+  background-size: 50%;
+}
+
+.addRemoveReplaceIcon.removeIcon {
+  background-image: url(../img/remove-black.png);
+  background-size: 40%;
+}
+
+.content {
+  display: flex;
+  // align-items: center;
+  // text-align: justify;
+  font-size: 0.85rem;
+  width: calc(100% - 2rem);
+  overflow: hidden;
+  // padding-left: 1rem;
+
+  a {
+    // text-decoration: none;
+    color: var(--text-primary-color);
+    font-weight: 400;
+    font-size: 0.875rem;
+  }
+
+  input[type='checkbox'] {
+    display: none;
+  }
+}
+
+.phone {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  font-weight: 400;
+  width: 100%;
+
+  .phoneText {
+    display: flex;
+    align-items: center;
+  }
+
+  .phoneButton {
+    text-decoration: none;
+    border-radius: 0.5rem;
+    background: #f5f5f5;
+    color: #000;
+    padding: 0.5rem 0.25rem;
+    min-width: 5rem;
+    text-align: center;
+    user-select: none;
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+}
+
+.poiInfoText {
+  color: var(--text-primary-color);
+  width: 100%;
+  min-width: 20rem;
+  padding: 0;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  // border-right: 0.0625rem solid rgba(0, 0, 0, 0.12);
+
+  .bookaTable {
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+
+  .stepDayInfo {
+    display: flex;
+    align-items: center;
+    .partOfDay {
+      font-size: 0.875rem;
+      // padding: 0.625rem 0.9375rem;
+    }
+  }
+
+  .bull {
+    line-height: 0.5rem;
+    font-size: 2.25rem;
+    padding-bottom: 0.25rem;
+    opacity: 0.5;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+
+  .globalRating {
+    display: flex;
+    align-items: center;
+    padding: 0.625rem 0.9375rem;
+
+    .ratingTitle {
+      font-size: 0.875rem;
+      padding-right: 0.25rem;
+    }
+    .ratingContent {
+      display: flex;
+      align-items: center;
+      text-align: justify;
+      font-size: 0.875rem;
+      .ratingCount {
+        margin-right: 0.25rem;
+      }
+      // .bull {
+      //   line-height: 0.5rem;
+      //   font-size: 2.25rem;
+      //   padding-bottom: 0.25rem;
+      //   opacity: 0.5;
+      // }
+    }
+  }
+
+  .poiInfo {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 10px;
+    color: #5c5c5c;
+  }
+
+  .poiInfoTag {
+    display: inline-block;
+    padding: 0.5rem;
+    margin: 0.125rem;
+    font-size: 0.875rem;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25em;
+    background-color: #f5f5f5;
+    color: #000;
+  }
+
+  .poiInfoTextIcon {
+    fill: var(--text-primary-color);
+    margin-right: 0.5rem;
+  }
+}
+
+@media screen and (min-width: $mobile-view-breakpoint) {
+  .poiInfoText {
+    .poiInfo {
+      display: flex;
+      flex-direction: row;
+
+      .content {
+        width: calc(100% - 7rem);
+      }
+    }
+  }
+}

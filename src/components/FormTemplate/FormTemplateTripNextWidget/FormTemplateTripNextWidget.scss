@@ -1,0 +1,101 @@
+@import '../../../styles/themes/params.scss';
+
+.stepsContainer {
+  display: flex;
+  align-items: center;
+  // justify-content: space-between;
+  justify-content: center;
+  height: 5rem;
+  // padding: 0 1rem;
+  padding: 2rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  // border-bottom: 1px solid #dfdfdf;
+
+  .backButton {
+    cursor: pointer;
+  }
+
+  .steps {
+    display: flex;
+    align-items: center;
+    margin: 0 !important;
+    justify-content: center;
+    width: 100%;
+
+    li {
+      display: flex;
+      align-items: center;
+    }
+
+    .selectedStep {
+      color: var(--primary-color);
+
+      svg {
+        fill: var(--primary-color);
+      }
+    }
+
+    .stepHeader {
+      width: max-content;
+    }
+
+    .stepArrowRight {
+      margin: 0 1rem;
+    }
+
+    &.firstStep {
+      transform: translateX(55%);
+    }
+    &.secondStep {
+      transform: translateX(25%);
+    }
+    &.thirdStep {
+      transform: translateX(-15%);
+    }
+    &.fourthStep {
+      transform: translateX(-60%);
+    }
+  }
+}
+
+.stepDestination {
+  border-radius: 0.5rem;
+  padding: 0;
+  width: 100% !important;
+
+  .formTempButtons {
+    position: relative;
+    margin-bottom: 1.25rem;
+    /* box-shadow: 0px 3px 8px 1px rgb(0 0 0 / 20%); */
+  }
+}
+
+@media screen and (min-width: $mobile-view-breakpoint) {
+  .stepDestination {
+    padding: 12px 22px;
+    width: 100% !important;
+
+    .formTempButtons {
+      /* position: relative;
+      box-shadow: none;
+      margin-bottom: 1.25rem; */
+    }
+  }
+  .stepsContainer {
+    .steps {
+      &.firstStep {
+        transform: translateX(0);
+      }
+      &.secondStep {
+        transform: translateX(0);
+      }
+      &.thirdStep {
+        transform: translateX(0);
+      }
+      &.fourthStep {
+        transform: translateX(0);
+      }
+    }
+  }
+}

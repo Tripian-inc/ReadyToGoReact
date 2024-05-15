@@ -1,0 +1,140 @@
+@import '../../../styles/themes/params.scss';
+
+.gallery {
+  margin-top: auto;
+
+  .zoomedImage {
+    background-color: #000 !important;
+    overflow-y: hidden !important;
+    z-index: 1600;
+    height: calc(100% - 3rem);
+    margin-top: 4rem;
+  }
+
+  .content,
+  .modalContent {
+    position: relative;
+    display: block !important;
+
+    .img {
+      // display: flex;
+      width: 100%;
+    }
+  }
+
+  .gallery {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .galleryWrapper {
+    width: 45%;
+    margin: 0 auto;
+  }
+
+  .modalCloseIcon {
+    position: absolute;
+    top: 0.25rem;
+    right: 0.25rem;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    filter: drop-shadow(0 3px 2px #000);
+    bottom: 1% !important;
+    z-index: 5;
+  }
+
+  :global {
+    .slick-prev {
+      width: 40px;
+      height: 40px;
+      left: 5px;
+      z-index: 1;
+      filter: drop-shadow(0 3px 2px #000);
+
+      &:before {
+        font-size: 35px;
+      }
+    }
+
+    .slick-next {
+      width: 40px;
+      height: 40px;
+      right: 5px;
+      filter: drop-shadow(0 3px 2px #000);
+
+      &:before {
+        font-size: 35px;
+      }
+    }
+
+    .slick-dots {
+      top: 10px;
+      bottom: unset;
+      li {
+        z-index: 1;
+      }
+      li.slick-active button:before {
+        color: #fff;
+        opacity: 1;
+      }
+      li button:before {
+        color: #fff;
+        font-size: 10px;
+        filter: drop-shadow(0 3px 2px #000);
+      }
+    }
+  }
+
+  img {
+    width: 100%;
+  }
+
+  .imageOwner {
+    font-size: 0.625rem;
+    color: #fff;
+    text-shadow: 0.0625rem 0.0625rem 0.125rem #000;
+    position: absolute;
+    left: 0.5rem;
+    bottom: 0.5rem;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+  .close {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: none;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    filter: drop-shadow(0px 3px 2px #000);
+  }
+}
+
+@media screen and (min-width: $mobile-view-breakpoint) {
+  .gallery {
+    height: 100%;
+
+    :global {
+      .slick-slider {
+        height: 100%;
+      }
+    }
+
+    .content {
+      .img {
+        height: 400px;
+      }
+    }
+
+    .modalContent {
+      .img {
+        height: calc(90% - 2.5rem);
+      }
+    }
+  }
+}

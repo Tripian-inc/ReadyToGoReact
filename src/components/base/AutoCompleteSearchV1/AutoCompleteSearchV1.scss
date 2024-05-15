@@ -1,0 +1,43 @@
+@import '../../../styles/themes/theme.scss';
+
+.search {
+  position: relative;
+}
+
+.search_icon {
+  height: 60%;
+  width: 4em;
+  margin-top: 0.7em;
+  position: absolute;
+  right: 0.1rem;
+
+  border: 0;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  background-image: url('./svg/search.svg');
+}
+
+.search_ul {
+  list-style-type: none !important;
+  padding: 0;
+  overflow: hidden;
+  overflow-y: auto;
+  max-height: 13rem;
+  border: 1px solid var(--secondary-color);
+
+  .activeSearch_li {
+    padding: 0.4rem;
+    font-weight: bold;
+    cursor: pointer;
+    background-color: rgba(var(--text-primary-color-rgb, 0.25));
+  }
+
+  .search_li {
+    padding: 0.4rem;
+  }
+  .search_li:hover {
+    font-weight: bold;
+    cursor: pointer;
+    background-color: rgba(var(--text-primary-color-rgb, 0.25));
+  }
+}

@@ -1,0 +1,54 @@
+@import '../../styles/themes/params.scss';
+
+.socialLoginButtons {
+  padding: 0 0.5rem;
+
+  a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 2.5rem !important;
+    width: 100%;
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+    line-height: 48px;
+    color: #fff !important;
+    margin-bottom: 0.5rem !important;
+    text-decoration: none;
+    border-radius: 0.25rem;
+    box-shadow: rgb(0 0 0 / 50%) 0px 1px 2px;
+  }
+
+  .facebookButton {
+    background: #1877f2 !important;
+    color: #fff !important;
+  }
+
+  .googleButton {
+    background: #fff !important;
+    color: rgba(0, 0, 0, 0.54) !important;
+  }
+
+  .appleButton {
+    background: #000 !important;
+    color: #fff;
+  }
+
+  .socialLoginText {
+    margin-left: 0.5rem;
+  }
+
+  .socialLoginLogo {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 4rem;
+  }
+}
+
+@media screen and (min-width: $mobile-view-breakpoint) {
+  .socialLoginLogo {
+    left: 5rem !important;
+  }
+}

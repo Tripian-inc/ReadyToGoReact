@@ -1,0 +1,370 @@
+@import '../../styles/themes/params.scss';
+
+.poi {
+  width: 100%;
+  background-color: var(--background-color);
+  min-width: 20rem;
+  padding: 0;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-origin: border-box;
+  // border-right: 0.0625rem solid rgba(0, 0, 0, 0.12);
+
+  .feedback {
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 0.25rem;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    .feedbackButton {
+      // filter: drop-shadow(0 3px 2px #000);
+      text-shadow: 0.0625rem 0.0625rem 0.125rem #000;
+      color: #fff !important;
+      font-size: 0.875rem;
+    }
+  }
+
+  .scoreDetails {
+    margin: 1rem 1rem 0 1rem;
+    padding: 14px 17px;
+    border: 0.5px solid #c9c9c9;
+    border-radius: 8px;
+
+    li {
+      padding: 0.125rem 0;
+
+      b {
+        display: inline-block;
+        width: 100px;
+        padding-right: 2rem;
+      }
+
+      span {
+        display: inline-block;
+        width: 30px;
+        text-align: end;
+      }
+      .bar {
+        margin-left: 5px;
+        display: inline-block;
+        height: 0.5rem;
+        background-color: green;
+      }
+    }
+  }
+
+  .poiInfotourCardHeader {
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #e54e53dd;
+  }
+
+  .poiImage {
+    position: relative;
+    // min-height: 408px;
+    min-width: 320px;
+    width: 100%;
+    height: 100%;
+    display: block;
+
+    // svg {
+    //   width: 100%;
+    // }
+
+    .stepMatch {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: #434b55;
+      color: #fff;
+      font-size: 0.75rem;
+      line-height: 1.25rem;
+      z-index: 5;
+      padding: 0.25rem 0.375rem;
+      border-radius: 0 0 0.625rem 0;
+    }
+
+    .poiImg {
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      height: initial;
+    }
+  }
+
+  .poiTitle {
+    color: var(--primary-color);
+    position: relative;
+    margin: 0.5rem 4rem 0.5rem 0;
+    max-width: 100%;
+    padding: 0.625rem 0.9375rem;
+    letter-spacing: 0.03125rem;
+  }
+
+  .partOfDay {
+    font-size: 0.75rem;
+    padding: 0.625rem 0.9375rem;
+  }
+
+  .globalRating {
+    display: flex;
+    padding: 0.625rem 0.9375rem;
+
+    .ratingTitle {
+      font-size: 0.75rem;
+      padding-right: 0.25rem;
+    }
+    .ratingContent {
+      display: flex;
+      align-items: center;
+      text-align: justify;
+      font-size: 0.75rem;
+      .ratingCount {
+        margin-right: 0.25rem;
+      }
+    }
+  }
+
+  .poiInfo {
+    width: 100%;
+    display: block;
+    padding: 0rem 0.625rem;
+
+    ul {
+      padding: 0;
+
+      li {
+        display: flex;
+        align-items: center;
+        padding: 0.5rem 0;
+
+        > div {
+          margin: 0rem 0.3125rem 0rem 0.625rem;
+          /* padding: 1.25rem 0.5rem; */
+          /* text-align: right; */
+          border-radius: 0.125rem;
+        }
+        .header {
+          display: none;
+          font-size: 0.75rem;
+          width: 4rem;
+        }
+        .hoursIcon {
+          background-image: url(./img/clock.png);
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position-y: center;
+          height: 1rem;
+          width: 1rem;
+        }
+        .cuisinesIcon {
+          background-image: url(./img/place_detail_cuisine_bold@2x.png);
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position-y: center;
+          height: 1rem;
+          width: 1rem;
+        }
+        .mustTryIcon {
+          background-image: url(./img/must.png);
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position-y: center;
+          height: 1rem;
+          width: 1rem;
+        }
+        .featuresIcon {
+          background-image: url(./img/hashtag.png);
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position-y: center;
+          height: 1rem;
+          width: 1rem;
+        }
+        .phoneIcon {
+          background-image: url(./img/phone.png);
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position-y: center;
+          height: 1rem;
+          width: 1rem;
+        }
+        .webIcon {
+          background-image: url(./img/link.png);
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position-y: center;
+          height: 1rem;
+          width: 1rem;
+        }
+        .priceIcon {
+          background-image: url(./img/dollar.png);
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position-y: center;
+          height: 1rem;
+          width: 1rem;
+        }
+        .addressIcon {
+          background-image: url(./img/pin.png);
+          background-size: contain;
+          background-repeat: no-repeat;
+          background-position-y: center;
+          height: 1rem;
+          width: 1rem;
+        }
+
+        .content {
+          display: block;
+          align-items: center;
+          text-align: justify;
+          font-size: 0.875rem;
+          max-width: 85%;
+          overflow: hidden;
+
+          a {
+            text-decoration: none;
+          }
+
+          input[type='checkbox'] {
+            display: none;
+          }
+
+          .hoursContent {
+            position: relative;
+            cursor: pointer;
+            border-radius: 0.4375rem;
+            transition: all 0.25s ease-out;
+            margin-right: 20px;
+            width: 100%;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+
+            &::after {
+              position: absolute;
+              right: -0.5rem;
+              top: 0.25rem;
+              content: '';
+              border-top: 0.3125rem solid transparent;
+              border-bottom: 0.3125rem solid transparent;
+              border-left: 0.3125rem solid currentColor;
+              vertical-align: middle;
+              margin-right: 0.7rem;
+              transform: translateY(-0.125rem);
+              transition: transform 0.2s ease-out;
+              transform: rotate(90deg);
+            }
+          }
+
+          .hoursToggle:checked + .hoursContent {
+            display: block;
+            // height: 105px;
+            &::after {
+              transform: rotate(-90deg) translateX(-0.1875rem);
+              top: 0rem;
+            }
+          }
+
+          .addressContent {
+            cursor: pointer;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+          .addressToggle:checked + .addressContent {
+            display: block;
+          }
+
+          .featuresContent {
+            cursor: pointer;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+          }
+          .featuresToggle:checked + .featuresContent {
+            display: block;
+          }
+
+          .web {
+            > a {
+              text-decoration: none;
+              overflow: hidden;
+              display: block;
+              white-space: nowrap;
+              text-overflow: ellipsis;
+            }
+          }
+
+          .phone {
+            > a {
+              text-decoration: none;
+              overflow: hidden;
+              display: block;
+              -webkit-line-clamp: 1;
+              -webkit-box-orient: vertical;
+              text-overflow: ellipsis;
+            }
+          }
+        }
+        .description {
+          font-size: 1rem;
+
+          input[type='checkbox'] {
+            display: none;
+          }
+          .descContent {
+            cursor: pointer;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            margin-bottom: 0.75rem;
+          }
+          .descToggle:checked + .descContent {
+            display: block;
+          }
+        }
+      }
+    }
+  }
+  .openTours {
+    text-align: center;
+    padding-bottom: 1rem;
+  }
+}
+
+@media screen and (min-width: $mobile-view-breakpoint) {
+  .poi {
+    .poiImage {
+      height: 400px;
+      /* overflow: hidden; */
+    }
+
+    .poiInfo {
+      ul {
+        li {
+          .header {
+            display: block;
+          }
+          .content {
+            max-width: 65%;
+          }
+        }
+      }
+    }
+  }
+
+  .description {
+    .descContent {
+      text-indent: 1.25rem;
+    }
+  }
+}

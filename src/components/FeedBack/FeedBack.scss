@@ -1,0 +1,45 @@
+@import '../../styles/themes/params.scss';
+
+.feedbackLoading {
+  min-height: 21rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feedbackModal {
+  min-width: 90%;
+  background-color: var(--background-color);
+}
+
+.feedbackDesc {
+  position: relative;
+  resize: vertical;
+  color: black;
+  cursor: text;
+  display: inline-flex;
+  font-size: 1rem;
+  box-sizing: border-box;
+  align-items: center;
+  line-height: 1.1875rem;
+  border-radius: 0.25rem;
+  height: fit-content;
+  border: 0.0625rem solid rgba(var(--primary-color-rgb), 0.25);
+  transition: border-color 500ms ease;
+  width: 100% !important;
+  overflow: hidden;
+  min-height: 6rem;
+
+  &:hover {
+    border-color: rgba(var(--primary-color-rgb), 0.8);
+  }
+  &:focus-within {
+    border-color: rgba(var(--primary-color-rgb), 0.8);
+  }
+}
+
+@media screen and (min-width: $mobile-view-breakpoint) {
+  .feedbackModal {
+    min-width: 50%;
+  }
+}

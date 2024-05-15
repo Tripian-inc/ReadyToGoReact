@@ -1,0 +1,51 @@
+@import '../../../styles/themes/params.scss';
+
+.loginLoading {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+}
+form {
+  position: relative;
+}
+
+.recaptcha {
+  transform: scale(0.85);
+}
+
+.errorMessage {
+  color: var(--primary-color);
+}
+
+.loginButton {
+  width: 100%;
+  height: 2.5rem !important;
+  font-weight: 600 !important;
+}
+
+.forgotPasswordButton {
+  color: var(--text-primary-color) !important;
+  font-weight: 600;
+  padding-left: 0 !important;
+}
+
+.horizontalLine {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #000;
+  line-height: 0.1em;
+  margin: 10px 0 20px;
+  span {
+    background: #fff;
+    padding: 0 10px;
+  }
+}
+
+@media screen and (min-width: $mobile-view-breakpoint) {
+  .recaptcha {
+    transform: unset;
+  }
+}

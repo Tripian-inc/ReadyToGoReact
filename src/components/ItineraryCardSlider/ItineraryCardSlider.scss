@@ -1,0 +1,118 @@
+@import '../../styles/themes/params.scss';
+
+.cardSlider {
+  position: relative;
+  padding-left: 0.25rem !important;
+  padding-right: 0.25rem !important;
+
+  :global {
+    .swiper-container {
+      position: unset !important;
+    }
+
+    .swiper-button-prev {
+      display: block;
+      left: -0.75rem;
+      width: fit-content;
+      height: fit-content;
+      background: #ccc;
+      border-radius: 50%;
+      margin-top: -1rem;
+      &:after {
+        display: none;
+      }
+
+      svg {
+        fill: #fff;
+        // font-size: 1.5rem;
+        border: 1px solid #f5f5f5;
+        border-radius: 50%;
+      }
+    }
+    .swiper-button-next {
+      display: block;
+      right: -0.75rem;
+      width: fit-content;
+      height: fit-content;
+      background: #ccc;
+      border-radius: 50%;
+      margin-top: -1rem;
+      &:after {
+        display: none;
+      }
+
+      svg {
+        fill: #fff;
+        // font-size: 1.5rem;
+        border: 1px solid #f5f5f5;
+        border-radius: 50%;
+      }
+    }
+
+    .swiper-button-disabled {
+      display: none !important;
+    }
+
+    @media screen and (min-width: $mobile-view-breakpoint) {
+      .swiper-button-prev {
+        display: block;
+        left: -0.75rem;
+        width: fit-content;
+        height: fit-content;
+        background: #ccc;
+        border-radius: 50%;
+        margin-top: -1rem;
+        &:after {
+          display: none;
+        }
+
+        svg {
+          fill: #fff;
+          // font-size: 1.5rem;
+          border: 1px solid #f5f5f5;
+          border-radius: 50%;
+        }
+      }
+      .swiper-button-next {
+        display: block;
+        right: -0.75rem;
+        width: fit-content;
+        height: fit-content;
+        background: #ccc;
+        border-radius: 50%;
+        margin-top: -1rem;
+        &:after {
+          display: none;
+        }
+
+        svg {
+          fill: #fff;
+          // font-size: 1.5rem;
+          border: 1px solid #f5f5f5;
+          border-radius: 50%;
+        }
+      }
+    }
+  }
+
+  .loadingCard {
+    height: 400px;
+    width: 235px !important;
+    border: 0px solid var(--secondary-color);
+    border-radius: 0.875rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px !important;
+    overflow: hidden !important;
+    position: relative;
+    text-align: center;
+  }
+}
+
+// @media screen and (min-width: $mobile-view-breakpoint) {
+//   .cardSlider {
+//     margin-left: auto;
+//     margin-right: auto;
+//     width: 95%;
+//     padding-left: 2em;
+//     padding-right: 2em;
+//   }
+// }

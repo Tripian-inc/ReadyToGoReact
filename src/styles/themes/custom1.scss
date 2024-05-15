@@ -1,0 +1,24 @@
+@import './params.scss';
+
+@import url('//fonts.googleapis.com/css?family=Montserrat&display=swap');
+/* @import url('//fonts.googleapis.com/css?family=Nunito+Sans&display=swap'); */
+
+/* Custom Colors 1 */
+$darkTextColor: #1f60a1;
+/* Custom Colors 1 */
+
+/* Export Theme Variables */
+$fontFamily: 'Montserrat', sans-serif;
+$defaultTextColor: $darkTextColor;
+
+$defaultColor1: #ffffffff;
+$defaultColor2: #9c27b0;
+
+$primaryColor1: #ffffffff;
+$primaryColor2: #1976d2ff;
+
+$secondaryColor1: #ffffffff;
+$secondaryColor2: #dc004eff;
+
+$disabledColor1: #00000042;
+$disabledColor2: #0000001f;

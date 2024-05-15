@@ -1,0 +1,18 @@
+.eyeIconButtonWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.3125rem;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  .eyeIconSvg {
+    height: 1rem;
+    width: 2.5rem;
+    user-select: none;
+    fill: none;
+    stroke: var(--text-primary-color);
+  }
+}

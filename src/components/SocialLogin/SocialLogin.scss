@@ -1,0 +1,38 @@
+@import '../../styles/themes/params.scss';
+
+.socialLoginButtons {
+  padding: 0 0.5rem;
+
+  a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 3rem !important;
+    width: 100%;
+    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+    line-height: 48px;
+    color: #fff !important;
+    margin-bottom: 0.5rem !important;
+    text-decoration: none;
+    border-radius: 0.75rem;
+    // box-shadow: rgb(0 0 0 / 50%) 0px 1px 2px;
+  }
+
+  .socialLoginButton {
+    background: #f5f5f5;
+    // background: var(--background-color) !important;
+    color: #000 !important;
+  }
+
+  .socialLoginText {
+    min-width: 9rem;
+    margin-left: 1.5rem;
+  }
+
+  .socialLoginLogo {
+    display: flex;
+    align-items: center;
+  }
+}

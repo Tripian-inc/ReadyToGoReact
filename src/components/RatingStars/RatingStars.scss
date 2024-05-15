@@ -1,0 +1,31 @@
+$height: 28px;
+
+.empty {
+  display: block;
+  /* background-image: url(./img/star-empty-28.png);
+  background-image: url(./img/star-icon-0-200.png);
+  background-image: url(./img/star-empty-256.png); */
+  background-image: url(./img/star-empty-300.png);
+
+  /* background-size: 28px;
+  width: 140px;
+  height: 28px; */
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+  /* background-image: url(./img/star-fill-28.png);
+  background-image: url(./img/star-icon-1-200.png);
+  z-index: -1;
+  position: relative;
+  background-image: url(./img/star-full-256.png);
+  */
+  background-image: url(./img/star-full-300.png);
+  /* background-size: 28px;
+  height: 28px; */
+}
+
+/* .count {
+  color: #666666;
+} */

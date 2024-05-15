@@ -1,0 +1,83 @@
+.poiRefCard {
+  ul {
+    padding-left: 0;
+    border-bottom: 0.0625rem solid rgba(var(--text-primary-color-rgb), 0.25);
+    margin: 0;
+    li {
+      width: 100%;
+      position: relative;
+      display: inline-flex;
+      background-color: var(--background-color);
+      padding: 0.5rem 0rem;
+      align-items: center;
+      margin: 0;
+      &:hover {
+        background-color: rgba(var(--text-primary-color-rgb), 0.1);
+        cursor: pointer;
+        border-radius: 0.25rem;
+        width: 100%;
+      }
+
+      .poiRefCardImg {
+        border-radius: 6px;
+        overflow: hidden;
+        display: inline-block;
+        margin-right: 1.25rem;
+        margin-left: 5px;
+        width: 3rem;
+      }
+
+      .refCardInfo {
+        width: calc(100% - 8rem);
+        align-self: center;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        .PoiRefCardContent {
+          width: calc(100% - 2rem);
+
+          .poiRefCardFooter {
+            display: flex;
+            align-items: center;
+
+            .poiAbilities {
+              display: flex;
+              align-items: center;
+              // padding-top: 0.5rem;
+
+              .poiAbilityItem {
+                margin-right: 0.5rem;
+              }
+            }
+          }
+        }
+
+        .refCardPartOfDay {
+          font-size: 0.75rem;
+          margin-top: 0.25rem;
+          margin-right: 1rem;
+        }
+
+        .poiRefCardName {
+          font-size: 0.85rem;
+          font-weight: bolder;
+        }
+        .correct {
+          background-image: url(./img/tripianCorrect.png);
+          background-size: contain;
+          width: 1.25rem;
+          height: 1.25rem;
+          background-repeat: no-repeat;
+          margin-left: 1rem;
+        }
+      }
+    }
+    .button {
+      display: inline;
+      position: absolute;
+      right: 5px;
+      // transform: translateY(10%);
+    }
+  }
+}

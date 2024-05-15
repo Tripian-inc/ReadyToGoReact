@@ -1,0 +1,32 @@
+@import '../../../../styles/themes/params.scss';
+
+.content {
+  display: flex;
+  align-items: center;
+}
+
+.stepDestination {
+  margin: 0 !important;
+  .stepDestLeft {
+    margin-bottom: 0 !important;
+    padding: 0 !important;
+  }
+
+  .stepDestRight {
+    margin-bottom: 0 !important;
+  }
+}
+
+@media screen and (min-width: $mobile-view-breakpoint) {
+  .stepDestination {
+    margin: 0 !important;
+    .stepDestLeft {
+      margin-bottom: 0 !important;
+      padding: 0 0.75rem !important;
+    }
+
+    .stepDestRight {
+      margin-bottom: 0 !important;
+    }
+  }
+}

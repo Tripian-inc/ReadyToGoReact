@@ -1,0 +1,7 @@
+enum BUTTON_TYPES {
+  CONTAINED = 'CONTAINED',
+  OUTLINED = 'OUTLINED',
+  TEXT = 'TEXT',
+}
+
+export default BUTTON_TYPES;

@@ -1,0 +1,129 @@
+.row {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1.25rem;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+
+  .col {
+    flex-grow: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0 0.75rem;
+    min-height: 1px;
+    margin-bottom: 1.25rem;
+
+    &.col12 {
+      max-width: 100%;
+      flex-basis: 100%;
+    }
+    &.col11 {
+      max-width: 91.666667%;
+      flex-basis: 91.666667%;
+    }
+    &.col10 {
+      max-width: 83.333333%;
+      flex-basis: 83.333333%;
+    }
+    &.col9 {
+      max-width: 75%;
+      flex-basis: 75%;
+    }
+    &.col8 {
+      max-width: 66.666667%;
+      flex-basis: 66.666667%;
+    }
+    &.col7 {
+      max-width: 58.333333%;
+      flex-basis: 58.333333%;
+    }
+    &.col6 {
+      max-width: 50%;
+      flex-basis: 50%;
+    }
+    &.col5 {
+      max-width: 41.666667%;
+      flex-basis: 41.666667%;
+    }
+    &.col4 {
+      max-width: 33.333333%;
+      flex-basis: 33.333333%;
+    }
+    &.col3 {
+      flex-grow: 0;
+      max-width: 25%;
+      flex-basis: 25%;
+    }
+    &.col2 {
+      flex-grow: 0;
+      max-width: 16.666667%;
+      flex-basis: 16.666667%;
+    }
+    &.col1 {
+      flex-grow: 0;
+      max-width: 8.333333%;
+      flex-basis: 8.333333%;
+    }
+
+    @media only screen and (min-width: $mobile-view-breakpoint) {
+      &.col12-m {
+        max-width: 100%;
+        flex-basis: 100%;
+      }
+      &.col11-m {
+        max-width: 91.666667%;
+        flex-basis: 91.666667%;
+      }
+      &.col10-m {
+        max-width: 83.333333%;
+        flex-basis: 83.333333%;
+      }
+      &.col9-m {
+        max-width: 75%;
+        flex-basis: 75%;
+      }
+      &.col8-m {
+        max-width: 66.666667%;
+        flex-basis: 66.666667%;
+      }
+      &.col7-m {
+        max-width: 58.333333%;
+        flex-basis: 58.333333%;
+      }
+      &.col6-m {
+        max-width: 50%;
+        flex-basis: 50%;
+      }
+      &.col5-m {
+        max-width: 41.666667%;
+        flex-basis: 41.666667%;
+      }
+      &.col4-m {
+        max-width: 33.333333%;
+        flex-basis: 33.333333%;
+      }
+      &.col3-m {
+        flex-grow: 0;
+        max-width: 25%;
+        flex-basis: 25%;
+      }
+      &.col2-m {
+        flex-grow: 0;
+        max-width: 16.666667%;
+        flex-basis: 16.666667%;
+      }
+      &.col1-m {
+        flex-grow: 0;
+        max-width: 8.333333%;
+        flex-basis: 8.333333%;
+      }
+    }
+
+    .row {
+      margin-left: -0.75rem;
+      margin-right: -0.75rem;
+    }
+  }
+}

@@ -1,0 +1,78 @@
+@import '../../styles/themes/params.scss';
+
+.cardSlider {
+  position: relative;
+
+  :global {
+    .swiper-slide {
+      width: auto !important;
+      // margin-right: 1.25rem;
+    }
+
+    .swiper-container {
+      position: unset !important;
+    }
+
+    .swiper-button-prev {
+      display: none;
+    }
+
+    .swiper-button-next {
+      display: none;
+    }
+
+    @media screen and (min-width: $mobile-view-breakpoint) {
+      .swiper-button-prev {
+        display: block;
+        left: -1rem;
+        border-radius: 50%;
+        background: var(--background-color);
+        width: 2.5rem;
+        height: 2.5rem;
+        &:after {
+          display: none;
+        }
+
+        svg {
+          fill: var(--text-primary-color);
+        }
+      }
+      .swiper-button-next {
+        display: block;
+        right: -1rem;
+        border-radius: 50%;
+        background: var(--background-color);
+        width: 2.5rem;
+        height: 2.5rem;
+        &:after {
+          display: none;
+        }
+
+        svg {
+          fill: var(--text-primary-color);
+        }
+      }
+    }
+  }
+
+  .loadingCard {
+    height: 400px;
+    width: 235px !important;
+    border: 0px solid var(--secondary-color);
+    border-radius: 0.875rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px !important;
+    overflow: hidden !important;
+    position: relative;
+    text-align: center;
+  }
+}
+
+// @media screen and (min-width: $mobile-view-breakpoint) {
+//   .cardSlider {
+//     margin-left: auto;
+//     margin-right: auto;
+//     width: 95%;
+//     padding-left: 2em;
+//     padding-right: 2em;
+//   }
+// }

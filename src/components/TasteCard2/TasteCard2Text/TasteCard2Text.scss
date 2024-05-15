@@ -1,0 +1,39 @@
+.tasteCard2Text {
+  box-sizing: border-box;
+  // height: 120px;
+  // width: 235px;
+  line-height: 1.28571em !important;
+  padding: 0.4375rem 0.625rem;
+  white-space: normal;
+
+  h4 {
+    /* font-family: 'Segoe UI', sans-serif !important; */
+    padding: 0.25rem 0;
+    margin: 0px;
+    // height: 1.375rem;
+    overflow: hidden;
+
+    line-height: 1.1;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+  }
+
+  p {
+    /* height: calc(3 * 0.7125rem + 0.05rem); */
+    line-height: 1.3;
+    font-size: 0.7125rem;
+    margin: 0.5rem 0 0;
+    display: block;
+    display: -webkit-box;
+  }
+
+  .attraction {
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

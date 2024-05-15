@@ -1,0 +1,126 @@
+.card {
+  // height: 400px;
+  width: 235px;
+  border: 0px solid var(--secondary-color);
+  border-radius: 0.875rem;
+  box-shadow: rgba(var(--text-primary-color-rgb), 0.15) 0px 2px 8px !important;
+  overflow: hidden !important;
+  position: relative;
+  margin: 0 8px 6px;
+}
+
+.match {
+  color: #fff;
+  font-size: 0.75rem;
+  border-bottom-right-radius: 0.625rem;
+  background: #434b55;
+  left: 0;
+  line-height: 1.25rem;
+  padding: 0.25rem 0.375rem;
+  position: absolute;
+  top: 0;
+  /* font-family: Segoe UI, sans-serif !important; */
+}
+
+.thumbsLoading {
+  position: absolute;
+  bottom: 0.625rem;
+  left: 0;
+  right: 0;
+  z-index: 1;
+}
+
+.buttons {
+  /* display: flex; */
+  display: none;
+  justify-content: space-around;
+  height: 2.3125rem;
+  margin-bottom: 0.1875rem;
+}
+
+.thumbs {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 40%;
+  height: 100%;
+  cursor: pointer;
+  border-radius: 0.3125rem;
+
+  .like {
+    height: 2.75rem;
+    width: 2.75rem;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: center;
+    background-image: url('./img/thumbsupgreen.png');
+
+    &:hover {
+      transform: translate(0px, -3px);
+      background-size: 2.375rem;
+    }
+  }
+
+  .dislike {
+    height: 2.75rem;
+    width: 2.75rem;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-position: center;
+    background-image: url('./img/thumbsdownred.png');
+
+    &:hover {
+      transform: translate(0px, -3px);
+      background-size: 2.375rem;
+    }
+  }
+
+  .likeEmpty {
+    height: 2.75rem;
+    width: 2.75rem;
+    background-size: 2rem;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-image: url('./img/thumbsup.png');
+    background-position: center;
+    border-radius: 50%;
+    transition: all 0.25s ease;
+
+    &:hover {
+      transform: translate(0px, -3px);
+      background-size: 2.375rem;
+      // background-color: #48484816;
+    }
+  }
+
+  .dislikeEmpty {
+    height: 2.75rem;
+    width: 2.75rem;
+    background-size: 2rem;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    background-image: url('./img/thumbsdown.png');
+    background-position: center;
+    border-radius: 50%;
+    transition: all 0.25s ease;
+
+    &:hover {
+      transform: translate(0px, -3px);
+      background-size: 2.375rem;
+      // background-color: #48484816;
+    }
+  }
+}
+
+/* .desc {
+  border-radius: 3px;
+  background-color: purple;
+  color: pink;
+}
+
+.myspan {
+  color: darkblue;
+  border: 1px solid purple;
+}
+ */

@@ -1,0 +1,75 @@
+.cardText {
+  box-sizing: border-box;
+  height: 120px;
+  width: 235px;
+  line-height: 1.28571em !important;
+  padding: 0.4375rem 0.625rem;
+  white-space: normal;
+  background-color: #fff;
+  color: #000;
+  h4 {
+    /* font-family: 'Segoe UI', sans-serif !important; */
+    padding: 0.25rem 0;
+    margin: 0px;
+    height: 1.375rem;
+    overflow: hidden;
+    line-height: 1.1;
+    display: block;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+  }
+  h6 {
+    line-height: 0.75rem;
+    font-size: 0.75rem;
+    /* font-family: 'Segoe UI', sans-serif !important; */
+    padding: 0;
+    margin: 0.1875rem 0 0.4375rem;
+    /* font-size: 0.85rem !important; */
+    color: #888888 !important;
+    text-transform: capitalize;
+  }
+  p {
+    /* height: calc(3 * 0.7125rem + 0.05rem); */
+    line-height: 1.3;
+    font-size: 0.7125rem;
+    margin: 0.5rem 0 0;
+    display: block;
+    display: -webkit-box;
+  }
+
+  .attraction {
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .nonAttraction {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    display: inherit;
+  }
+
+  .statusWarning {
+    font-weight: 600;
+    color: #ff0000;
+  }
+}
+
+.rate {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: flex-start;
+}
+.count {
+  /* font-family: Segoe UI, sans-serif; */
+  color: #555; /* #888; 
+  font-weight: bold; */
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  margin-left: 0.3125rem;
+}

@@ -1,0 +1,30 @@
+.radioButton {
+  /* .radioButton-base */
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  margin-left: -8px;
+  margin-right: 16px;
+  color: var(--text-primary-color);
+
+  .span1 {
+    color: inherit;
+    cursor: pointer;
+    outline: 0;
+    position: relative;
+    padding: 12px 10px;
+
+    > input {
+      display: none;
+    }
+
+    .checked {
+      fill: var(--primary-color);
+    }
+  }
+
+  .span2 {
+    font-size: 1rem;
+    letter-spacing: 0.00938em;
+  }
+}

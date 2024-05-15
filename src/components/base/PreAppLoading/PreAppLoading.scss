@@ -1,0 +1,15 @@
+.preAppLoading {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(238, 238, 238, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 5;
+
+  .preLoadingWrapper {
+    width: 50%;
+  }
+}
