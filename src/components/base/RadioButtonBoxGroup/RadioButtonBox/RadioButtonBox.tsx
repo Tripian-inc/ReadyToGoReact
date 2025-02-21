@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { CheckboxChecked, CheckboxUnChecked } from '../../Svg/Icons/Checkbox';
+import { RadioButtonChecked, RadioButtonUnChecked } from '../../Svg/Icons';
 import classes from './RadioButtonBox.scss';
 
 interface IRadioButtonBox {
@@ -16,7 +16,7 @@ const RadioButtonBox: React.FC<IRadioButtonBox> = ({ domId, text, description, s
     onChange(event.target.checked, event.target.name);
   };
 
-  const svg = checked ? <CheckboxChecked className={classes.checked} size="1.5rem" /> : <CheckboxUnChecked size="1.5rem" />;
+  const svg = checked ? <RadioButtonChecked className={classes.checked} size="1.5rem" /> : <RadioButtonUnChecked size="1.5rem" />;
 
   const memoizedUniqueDomId = useMemo(() => `dropdown${Math.random()}`, []);
 

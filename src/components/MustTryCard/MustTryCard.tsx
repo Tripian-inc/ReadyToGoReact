@@ -66,6 +66,10 @@ const MustTryCard: React.FC<IMustTryCard> = ({ taste, poiCardClicked, fetchPois,
               hideReservationIcon={hideReservationIcon}
               hideTourTicketIcons={hideTourTicketIcons}
               hideOfferIcon={hideOfferIcon}
+              gygTourIds={[]}
+              bbTourIds={[]}
+              viatorTourIds={[]}
+              toristyTourIds={[]}
               t={t}
             />
           ))}

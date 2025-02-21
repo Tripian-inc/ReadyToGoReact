@@ -17,17 +17,17 @@ const DeleteUserSuccess: React.FC<IDeleteUserSuccess> = ({ goRegister, t }) => (
     </div>
     <div className="row center mb0 mt5">
       <div className="col col12 mb0">
-        <h4>Account Successfully Deleted</h4>
+        <h4>{t('user.deleteUser.successHeader')} </h4>
       </div>
     </div>
     <div className="row center">
       <div className="col col12 my2">
-        <span className={classes.text}>Your account has been successfully deleted. All associated data has been permanently removed from our system. If you ever decide to return, you will need to create a new account.</span>
+        <span className={classes.text}>{t('user.deleteUser.successMessage')} </span>
       </div>
     </div>
     <div className="row center mt8">
       <div className="col col12 my2">
-        <Button className={classes.resetPassAppButton} color="primary" text="Create a New Account" onClick={goRegister} />
+        <Button className={classes.resetPassAppButton} color="primary" text={t('user.deleteUser.createNew')} onClick={goRegister} />
       </div>
     </div>
   </div>

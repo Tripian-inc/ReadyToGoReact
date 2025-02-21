@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { useState } from 'react';
-import { helper } from '@tripian/model';
+import Model, { helper } from '@tripian/model';
 import TextField from '../../../../components/base/TextField/TextField';
 import Button from '../../../../components/base/Button/Button';
 import classes from './OpeningsForm.scss';
@@ -8,9 +8,10 @@ import classes from './OpeningsForm.scss';
 interface IOpeningsForm {
   defaultUserInfo?: { firstName: string; lastName: string; email: string; phone: string; note?: string };
   openingsFormCallback: (firstName: string, lastName: string, email: string, phone: string, note?: string) => void;
+  t: (value: Model.TranslationKey) => string;
 }
 
-const OpeningsForm: React.FC<IOpeningsForm> = ({ openingsFormCallback, defaultUserInfo }) => {
+const OpeningsForm: React.FC<IOpeningsForm> = ({ openingsFormCallback, defaultUserInfo, t }) => {
   const [error, setError] = useState(undefined);
   const [warningMessage, setWarningMessage] = useState<string>('');
   const [user, setUser] = useState(
@@ -46,15 +47,15 @@ const OpeningsForm: React.FC<IOpeningsForm> = ({ openingsFormCallback, defaultUs
     let newWarningMessage = '';
 
     if (user.firstName === '') {
-      newWarningMessage = 'First name can`t be empty';
+      newWarningMessage = t('trips.myTrips.localExperiences.tourDetails.pleaseEnterYourFirstName');
     } else if (user.lastName === '') {
-      newWarningMessage = 'Last name can`t be empty';
+      newWarningMessage = t('trips.myTrips.localExperiences.tourDetails.pleaseEnterYourLastName');
     } else if (user.email === '') {
-      newWarningMessage = 'Email can`t be empty';
+      newWarningMessage = t('trips.myTrips.localExperiences.tourDetails.pleaseEnterYourEmail');
     } else if (!emailValid) {
-      newWarningMessage = 'Email format is not valid';
+      newWarningMessage = t('trips.myTrips.localExperiences.tourDetails.emailIsInvalid');
     } else if (user.phone === '') {
-      newWarningMessage = 'Mobile number can`t be empty';
+      newWarningMessage = t('trips.myTrips.localExperiences.tourDetails.pleaseEnterYourPhoneNumber');
     }
 
     setWarningMessage(newWarningMessage);
@@ -76,28 +77,28 @@ const OpeningsForm: React.FC<IOpeningsForm> = ({ openingsFormCallback, defaultUs
       <form className={classes.openingsForm}>
         <div className="row">
           <div className="col col12 col6-m">
-            <TextField placeholder="First Name" type="text" name="firstName" value={user.firstName || ''} onChange={handleChange} autocomplete="first-name" />
+            <TextField placeholder={t('reservation.firstName')} type="text" name="firstName" value={user.firstName || ''} onChange={handleChange} autocomplete="first-name" />
           </div>
 
           <div className="col col12 col6-m">
-            <TextField placeholder="Last Name" type="text" name="lastName" value={user.lastName || ''} onChange={handleChange} autocomplete="last-name" />
+            <TextField placeholder={t('reservation.lastName')} type="text" name="lastName" value={user.lastName || ''} onChange={handleChange} autocomplete="last-name" />
           </div>
 
           <div className="col col12 col6-m">
-            <TextField placeholder="Email Address" type="email" name="email" value={user.email || ''} onChange={handleChange} autocomplete="username" />
+            <TextField placeholder={t('reservation.email')} type="email" name="email" value={user.email || ''} onChange={handleChange} autocomplete="username" />
           </div>
 
           <div className="col col12 col6-m">
-            <TextField placeholder="Mobile Number" type="number" name="phone" value={user.phone || ''} onChange={handleChange} autocomplete="phone-number" />
+            <TextField placeholder={t('reservation.mobileNumber')} type="number" name="phone" value={user.phone || ''} onChange={handleChange} autocomplete="phone-number" />
           </div>
 
           <div className="col col12">
-            <TextField placeholder="Note (Optional)" type="text" name="note" value={user.note || ''} onChange={handleChange} />
+            <TextField placeholder={t('reservation.note')} type="text" name="note" value={user.note || ''} onChange={handleChange} />
           </div>
         </div>
 
         <div className="row mb0 center">
-          <Button color={isFormChanged ? 'primary' : 'disabled'} text="Confirm Reservation" onClick={handleSubmit} />
+          <Button color={isFormChanged ? 'primary' : 'disabled'} text={t('reservation.confirm')} onClick={handleSubmit} />
           {error ? (
             <div className="col col12 my10">
               <h5>{error}</h5>

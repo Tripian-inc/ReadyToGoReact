@@ -1,5 +1,6 @@
 @import '../../../styles/themes/params.scss';
 
 .popover {
-  z-index: 1501;
+  z-index: 9999;
+  will-change: transform, opacity;
 }

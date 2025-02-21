@@ -9,6 +9,7 @@ import classes from './DefaultOfferCardItem.scss';
 
 interface IDefaultOfferCardItem {
   poiName?: string;
+  redeemText?: string;
   offer: Model.Offer;
   poiImage: string;
   optedIn: boolean;
@@ -16,9 +17,10 @@ interface IDefaultOfferCardItem {
   isLoadingOffer: (offerId: number) => boolean;
   optClicked: (optIn: boolean, id: number) => void;
   cardClicked?: () => void;
+  redeemClicked: () => void;
 }
 
-const DefaultOfferCardItem: React.FC<IDefaultOfferCardItem> = ({ poiName, offer, poiImage, optedIn, isMyOffer, isLoadingOffer, optClicked, cardClicked }) => {
+const DefaultOfferCardItem: React.FC<IDefaultOfferCardItem> = ({ poiName, redeemText, offer, poiImage, optedIn, isMyOffer, isLoadingOffer, optClicked, cardClicked, redeemClicked }) => {
   const [captionArray, setCaptionArray] = useState<string[]>([]);
 
   moment.locale(window.twindow.langCode);
@@ -154,18 +156,14 @@ const DefaultOfferCardItem: React.FC<IDefaultOfferCardItem> = ({ poiName, offer,
           <div className={classes.poiOfferRefCardBottom}>
             {/* <div className={classes.poiOfferRefCardTitleWrapper}>{offer.productType.receiveMethod}</div> */}
             <div className={classes.poiOfferRefCardDescWrapper}>
-              <div>{offer.title}</div>
+              <div className={classes.offerTitle}>{offer.title}</div>
               <span>
                 Offer Valid {moment(offer?.timeframe?.start).format('MMM Do')} - {moment(offer?.timeframe?.end).format('MMM Do')}
               </span>
               <div>{offer.caption}</div>
 
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                {isLoadingOffer(offer.id) ? (
-                  <div className={classes.loadingWrapper}>
-                    <PreLoading color="#fff" size="small" />
-                  </div>
-                ) : (
+                <div className={classes.mobileButtonsWrapper}>
                   <div
                     className={classes.optInText}
                     onClick={() => {
@@ -173,12 +171,19 @@ const DefaultOfferCardItem: React.FC<IDefaultOfferCardItem> = ({ poiName, offer,
                       else optClicked(true, offer.id);
                     }}
                     role="button"
+                    style={{ backgroundColor: optedIn ? 'gray' : 'var(--background-color)', color: optedIn ? '#fff' : 'var(--text-primary-color)' }}
                     onKeyDown={() => {}}
                     tabIndex={0}
                   >
-                    {optedIn ? 'Click to opt-out' : 'Click to opt-in'}
+                    {isLoadingOffer(offer.id) ? <PreLoading color={optedIn ? '#fff' : 'var(--text-primary-color)'} size="small" /> : <>{optedIn ? 'Click to opt-out' : 'Click to opt-in'}</>}
                   </div>
-                )}
+
+                  {optedIn ? (
+                    <div onClick={redeemClicked} role="button" onKeyDown={() => {}} tabIndex={0} className={classes.redeemButton}>
+                      {redeemText ?? 'Redeem'}
+                    </div>
+                  ) : null}
+                </div>
               </div>
             </div>
           </div>

@@ -47,6 +47,10 @@
   }
 }
 
+.poiSafetyText {
+  font-size: 0.875rem;
+}
+
 .addRemoveReplaceIcon {
   background-repeat: no-repeat;
   background-position: 50%;
@@ -64,16 +68,19 @@
 .addRemoveReplaceIcon.addIcon {
   background-image: url(../img/add-black.png);
   background-size: 40%;
+  background-color: #f5f5f5;
 }
 
 .addRemoveReplaceIcon.replaceIcon {
   background-image: url(../img/replace-black.png);
   background-size: 50%;
+  background-color: #f5f5f5;
 }
 
 .addRemoveReplaceIcon.removeIcon {
   background-image: url(../img/remove-black.png);
   background-size: 40%;
+  background-color: #f5f5f5;
 }
 
 .content {
@@ -210,6 +217,12 @@
     fill: var(--text-primary-color);
     margin-right: 0.5rem;
   }
+}
+
+
+.openTours {
+  text-align: center;
+  padding: 1rem 0;
 }
 
 @media screen and (min-width: $mobile-view-breakpoint) {

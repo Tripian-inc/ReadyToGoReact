@@ -6,10 +6,12 @@ interface ICalendar {
   fill?: string;
   bgColor?: string;
   size?: string;
+  className?: string;
 }
 
-const Calendar: React.FC<ICalendar> = ({ fill, bgColor, size }) => (
+const Calendar: React.FC<ICalendar> = ({ className, fill, bgColor, size }) => (
   <Svg
+    className={className}
     fill={fill}
     bgColor={bgColor}
     size={size}

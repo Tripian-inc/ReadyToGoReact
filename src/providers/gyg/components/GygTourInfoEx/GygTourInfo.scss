@@ -1,0 +1,74 @@
+@import '../../../../styles/themes/params.scss';
+
+.gygTourInfoMain {
+  position: relative;
+}
+
+.gygTourInfoMatch {
+  position: absolute;
+  background-color: rgba(var(--success-color-rgb), 0.9);
+  color: #fff;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  padding: 0.25rem 0.375rem;
+  margin: 1rem 0.5rem;
+  /* font-family: Segoe UI, sans-serif !important; */
+  z-index: 1;
+}
+
+.GygTourInfoImageMatch {
+  position: relative;
+}
+
+.gygTourInfoTitle {
+  color: var(--primary-color);
+  position: relative;
+  margin: 1rem;
+  letter-spacing: 0.03125rem;
+  width: calc(100% - 5rem);
+}
+
+.gygTourInfoImgClose {
+  position: absolute;
+  right: 1rem;
+  top: 2rem;
+  border: none;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  filter: drop-shadow(0px 3px 2px #000);
+}
+
+.formMainDiv {
+  position: relative;
+  padding: 2rem;
+}
+
+.bookingLoading {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+// .formMainDivLoading {
+//   border-radius: 1.8rem;
+// }
+
+@media screen and (min-width: $mobile-view-breakpoint) {
+  .gygTourInfoImgClose {
+    top: 1.5rem !important;
+  }
+}
+// .reviewRating {
+//   display: flex;
+//   align-items: center;
+
+//   .reviewSpan {
+//     font-weight: 500;
+//     margin-left: 0.625rem;
+//     font-size: 0.875rem;
+//   }
+// }

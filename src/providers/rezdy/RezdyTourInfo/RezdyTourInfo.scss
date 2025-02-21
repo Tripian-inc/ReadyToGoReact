@@ -1,0 +1,318 @@
+@import '../../../styles/themes/params.scss';
+
+.rezdyTourInfo {
+  width: 100%;
+  overflow: hidden !important;
+  position: relative;
+  font-size: 0.9rem;
+  padding: 1rem 1rem 4rem 1rem;
+
+  .desc {
+    p {
+      margin: 0 !important;
+    }
+  }
+
+  .shortDesc {
+    text-align: justify;
+
+    input[type='checkbox'] {
+      display: none;
+    }
+    .descContent {
+      cursor: pointer;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      padding: 0 1rem 0 0;
+    }
+    .descToggle:checked + .descContent {
+      display: block;
+    }
+  }
+
+  .content {
+    position: relative;
+    display: block !important;
+
+    .img {
+      width: 100%;
+
+      .rezdyTourInfoImg {
+        width: 100%;
+      }
+
+      .rezdyTourInfoImgLazy {
+        border: none !important;
+      }
+    }
+  }
+
+  :global {
+    .slick-prev {
+      width: 40px;
+      height: 40px;
+      left: 5px;
+      z-index: 1;
+      filter: drop-shadow(0 3px 2px #000);
+
+      &:before {
+        font-size: 35px;
+      }
+    }
+
+    .slick-next {
+      width: 40px;
+      height: 40px;
+      right: 5px;
+      filter: drop-shadow(0 3px 2px #000);
+
+      &:before {
+        font-size: 35px;
+      }
+    }
+
+    .slick-dots {
+      top: 10px;
+      bottom: unset;
+      li {
+        z-index: 1;
+      }
+      li.slick-active button:before {
+        color: #fff;
+        opacity: 1;
+      }
+      li button:before {
+        color: #fff;
+        font-size: 10px;
+        filter: drop-shadow(0 3px 2px #000);
+      }
+    }
+
+    .slick-list {
+      border-radius: 0.5rem;
+    }
+  }
+
+  .content {
+    .img {
+      width: 100%;
+      height: unset;
+    }
+  }
+
+  .imageOwner {
+    font-size: 0.625rem;
+    color: #fff;
+    text-shadow: 0.0625rem 0.0625rem 0.125rem #000;
+    position: absolute;
+    left: 0.5rem;
+    bottom: 0.5rem;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+  .title {
+    padding: 1.25rem 0 0.5rem 0 !important;
+    margin: 0;
+    color: var(--text-primary-color);
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .rezdyTourInfoTextRowBox {
+    width: 100%;
+    min-height: 50px;
+    height: 50px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+    padding: 14px 17px;
+    border: 0.5px solid #c9c9c9;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .rezdyTourInfoAddress {
+      display: flex;
+      width: calc(100% - 5rem);
+      color: #5c5c5c;
+      align-items: center;
+      span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 18px;
+      }
+
+      .addressIcon {
+        margin-right: 0.5rem;
+        margin-bottom: 0.25rem;
+      }
+    }
+
+    .copyAddress {
+      border-radius: 0.5rem;
+      background: #f5f5f5;
+      color: #000;
+      padding: 0.5rem 0.25rem;
+      min-width: 5rem;
+      text-align: center;
+      user-select: none;
+      font-size: 0.875rem;
+      cursor: pointer;
+    }
+  }
+
+  .rezdyTourInfoHeaderText {
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  .rezdyTourInfoDesc {
+    color: #000;
+  }
+
+  .readMoreButton {
+    background: #f5f5f5;
+    border-radius: 0.25rem;
+    padding: 0.3rem;
+    border: 1px solid #8f8f8f;
+    margin-left: 0.25rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    display: flex;
+    margin: 0.5rem auto 0;
+    min-width: 6rem;
+    justify-content: center;
+  }
+
+  .showMoreButton {
+    background: transparent;
+    border-radius: 0.25rem;
+    padding: 0.125rem 0.5rem;
+    border: 1px solid #8f8f8f;
+    margin: 0.125rem;
+    font-size: 0.875rem;
+    line-height: 24px;
+    cursor: pointer;
+  }
+
+  .showLessButton {
+    background: #f3f2ff;
+    border-radius: 0.25rem;
+    padding: 0.125rem 0.5rem;
+    border: 1px solid #f3f2ff;
+    margin: 0.125rem;
+    font-size: 0.875rem;
+    line-height: 24px;
+    cursor: pointer;
+
+    .rezdyTourInfoArrowIcon {
+      padding-top: 0.25rem;
+    }
+
+    .showLessButtonText {
+      margin-left: 0.25rem;
+    }
+  }
+  .tag {
+    display: inline-block;
+    padding: 0.5rem;
+    margin: 0.125rem;
+    font-size: 0.875rem;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25em;
+    background-color: #f5f5f5;
+    color: #000;
+  }
+
+  .roomOffer {
+    border-radius: 0.2rem;
+    border: 2px solid var(--success-color);
+    padding: 1rem;
+  }
+
+  .close {
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+    border: none;
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    filter: drop-shadow(0px 3px 2px #000);
+  }
+
+  img {
+    width: 100%;
+    height: 400px;
+    /* min-height: 400px; */
+    object-fit: cover;
+  }
+
+  .rezdyTourInfoBottom {
+    position: fixed;
+    background: #fff;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    width: calc(100% - 0.25rem);
+    justify-content: center;
+    height: 5rem;
+    z-index: 500;
+    border-top: 1px solid #ededed;
+
+    .rezdyTourInfoPrimaryButton {
+      background: #49a0ff;
+      color: #fff;
+      width: 13rem !important;
+      height: 3rem;
+      margin: 0 0.5rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 0.875rem;
+    }
+  }
+
+  .poiInfoTextIcon {
+    fill: var(--text-primary-color);
+    margin-right: 0.5rem;
+  }
+}
+
+@media screen and (min-width: $mobile-view-breakpoint) {
+  .rezdyTourInfo {
+    height: 100%;
+
+    :global {
+      .slick-slider {
+        height: 100%;
+      }
+    }
+
+    .content {
+      .img {
+        height: 350px;
+      }
+    }
+
+    .rezdyTourInfoBottom {
+      width: calc(50% - 0.25rem) !important;
+    }
+  }
+}

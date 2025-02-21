@@ -1,3 +1,5 @@
+@import '../../styles/themes/params.scss';
+
 :global {
   .trpReactCreatableSelectMulti {
     width: 100%;
@@ -5,6 +7,7 @@
     color: black;
     border-color: var(--primary-color);
     border-radius: 0.25rem;
+
 
     .trpReactCreatableSelectMulti__control {
       border: 0.0625rem solid rgba(var(--text-primary-color-rgb), 0.25);
@@ -36,9 +39,11 @@
 
         .trpReactCreatableSelectMulti__placeholder {
           line-height: 1.1875rem;
+          position: absolute;
         }
         .trpReactCreatableSelectMulti__single-value {
           line-height: 1.1875rem;
+     
         }
       }
     }
@@ -88,5 +93,11 @@
 }
 
 .poiSearchAutoComplete {
-  width: calc(100% - 12.5rem);
+  width: 80%;
+}
+
+@media screen and (min-width: $mobile-view-breakpoint) {
+  .poiSearchAutoComplete {
+    width: calc(100% - 12.5rem);
+  }
 }

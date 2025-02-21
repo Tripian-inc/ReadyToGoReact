@@ -4,7 +4,7 @@ import classes from './RadioButton.scss';
 
 interface IRadioButton {
   domId?: string;
-  text: string;
+  text: string | React.ReactNode;
   style?: React.CSSProperties;
   checked: boolean;
   onChange: (checked: boolean, value: string) => void;

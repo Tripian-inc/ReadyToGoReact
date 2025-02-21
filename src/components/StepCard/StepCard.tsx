@@ -20,6 +20,7 @@ import CustomPopover from '../base/CustomPopover/CustomPopover';
 import Info2 from '../base/Svg/Icons/Info2';
 import { EditHour, MustTry } from '../base/Svg/Icons';
 import emptyImageData from '../../constant/emptyImage';
+import TourTicketLazyLoading from '../TourTicketLazyLoading/TourTicketLazyLoading';
 import classes from './StepCard.scss';
 
 interface IStepCard {
@@ -40,6 +41,16 @@ interface IStepCard {
   hideReservationIcon: boolean;
   hideTourTicketIcons: boolean;
   hideOfferIcon: boolean;
+  hideScore?: boolean;
+  hideStepsTime?: boolean;
+  isWidget?: boolean;
+  hideFeatures?: boolean;
+  hideCuisine?: boolean;
+  gygTourIds: number[];
+  bbTourIds: number[];
+  viatorTourIds: string[];
+  toristyTourIds: string[];
+  tourTicketProductsLoading: boolean;
   t: (value: Model.TranslationKey) => string;
 }
 
@@ -61,6 +72,16 @@ const StepCard: React.FC<IStepCard> = ({
   hideReservationIcon = false,
   hideTourTicketIcons = false,
   hideOfferIcon,
+  hideScore = false,
+  hideStepsTime = false,
+  hideFeatures = false,
+  hideCuisine = false,
+  isWidget = false,
+  gygTourIds,
+  bbTourIds,
+  viatorTourIds,
+  toristyTourIds,
+  tourTicketProductsLoading,
   t,
 }) => {
   const [show, setShow] = useState<boolean>(false);
@@ -192,20 +213,20 @@ const StepCard: React.FC<IStepCard> = ({
         </div>
 
         <div className={classes.stepInfo}>
-          {uniqueCuisines.length > 0 ? (
+          {uniqueCuisines.length > 0 && !hideCuisine && (
             <>
               <span className={`${classes.cuisines} mt1`}>
                 <b>{t('trips.myTrips.itinerary.step.cuisine')}: </b>
                 {uniqueCuisines.join(', ')}
               </span>
             </>
-          ) : null}
-          {step.poi.tags.length > 0 ? (
+          )}
+          {step.poi.tags.length > 0 && !hideFeatures && (
             <span className={classes.features}>
               <b>{t('trips.myTrips.itinerary.step.features')}: </b>
               {step.poi.tags.length > 0 ? step.poi.tags.join(', ') : 'empty'}
             </span>
-          ) : null}
+          )}
         </div>
       </>
     );
@@ -216,7 +237,7 @@ const StepCard: React.FC<IStepCard> = ({
   } */
 
   return (
-    <div className={classes.stepCardMain}>
+    <div style={{ marginLeft: isWidget ? '1.5rem' : '0' }} className={classes.stepCardMain}>
       <div
         className={classes.stepCard}
         onKeyDown={() => {}}
@@ -230,8 +251,8 @@ const StepCard: React.FC<IStepCard> = ({
           {/* <img className={classes.figureImg} src={placeImg} alt={step.poi.name} /> */}
           <ImgLazy src={placeImg} alt={step.poi.name} x={256} y={256} />
           <div className={classes.stepOrder}>{`${step.order + 1}`}</div>
-          {step.score ? <div className={classes.stepMatch}>{`${step.score.toFixed(0)}% ${t('trips.myTrips.itinerary.step.poi.match')}`}</div> : null}
-          {stepsTime}
+          {!hideScore && step.score ? <div className={classes.stepMatch}>{`${step.score.toFixed(0)}%`}</div> : null}
+          {!hideStepsTime && stepsTime}
           {/* <span className={classes.hours}>{`${step.hours.from}-${step.hours.to}`}</span> */}
         </div>
         <div className={classes.stepCardinformation}>
@@ -247,32 +268,41 @@ const StepCard: React.FC<IStepCard> = ({
           </div>
           {info}
           <div className={classes.poiAbilities}>
-            {helper.tourAvailable(step.poi.bookings, TOUR_PROVIDER_IDS) && !hideTourTicketIcons && (
-              <div className={classes.poiAbilityItem}>
-                <Tour fill="#000" />
+            {tourTicketProductsLoading && step.poi.category.some((c) => c.id === 1) ? (
+              <div className={classes.loadingIndicator}>
+                <TourTicketLazyLoading />
               </div>
-            )}
-            {helper.ticketAvailable(step.poi.bookings, TICKET_PROVIDER_IDS) && !hideTourTicketIcons && (
-              <div className={classes.poiAbilityItem}>
-                <Ticket fill="#000" />
-              </div>
-            )}
-            {helper.restaurantReservationAvailable(step.poi.bookings, RESTAURANT_RESERVATION_PROVIDER_IDS) && !hideReservationIcon && (
-              <div className={classes.poiAbilityItem}>
-                <Reservation />
-              </div>
-            )}
-            {helper.offerAvailable(step.poi.offers) && !hideOfferIcon && (
-              <div className={classes.poiAbilityItem}>
-                <Offer />
-              </div>
-            )}
-            {step.poi.mustTries.length > 0 && (
-              <div className={classes.poiAbilityItem}>
-                <MustTry />
-              </div>
+            ) : (
+              <>
+                {helper.tourAvailable(step.poi.bookings, TOUR_PROVIDER_IDS, gygTourIds, bbTourIds, viatorTourIds, toristyTourIds) && !hideTourTicketIcons && (
+                  <div className={classes.poiAbilityItem}>
+                    <Tour fill="#000" />
+                  </div>
+                )}
+                {helper.ticketAvailable(step.poi.bookings, TICKET_PROVIDER_IDS, gygTourIds, bbTourIds, viatorTourIds, toristyTourIds) && !hideTourTicketIcons && (
+                  <div className={classes.poiAbilityItem}>
+                    <Ticket fill="#000" />
+                  </div>
+                )}
+                {helper.restaurantReservationAvailable(step.poi.bookings, RESTAURANT_RESERVATION_PROVIDER_IDS) && !hideReservationIcon && (
+                  <div className={classes.poiAbilityItem}>
+                    <Reservation />
+                  </div>
+                )}
+                {helper.offerAvailable(step.poi.offers) && !hideOfferIcon && (
+                  <div className={classes.poiAbilityItem}>
+                    <Offer />
+                  </div>
+                )}
+                {step.poi.mustTries.length > 0 && (
+                  <div className={classes.poiAbilityItem}>
+                    <MustTry />
+                  </div>
+                )}
+              </>
             )}
           </div>
+
           {alternativePois.length > 0 ? (
             <div className={classes.buttons}>
               <ReplaceIconButton
@@ -308,6 +338,10 @@ const StepCard: React.FC<IStepCard> = ({
                 hideReservationIcon={hideReservationIcon}
                 hideTourTicketIcons={hideTourTicketIcons}
                 hideOfferIcon={hideOfferIcon}
+                gygTourIds={gygTourIds}
+                bbTourIds={bbTourIds}
+                viatorTourIds={viatorTourIds}
+                toristyTourIds={toristyTourIds}
                 t={t}
               />
             ))

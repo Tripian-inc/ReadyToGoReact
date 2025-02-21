@@ -19,7 +19,7 @@
       position: relative;
       margin-top: -3rem;
       display: flex;
-      justify-content: end;
+      justify-content: flex-end;
 
       .offerCardCampaignNameText {
         padding: 0.25rem 0.5rem;
@@ -123,6 +123,7 @@
         background-color: var(--primary-color);
         color: #fff;
         padding: 0.5rem 1rem;
+        border-radius: 0.5rem;
       }
 
       .redeemed {

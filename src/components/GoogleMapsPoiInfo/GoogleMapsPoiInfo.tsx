@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { GoogleMap } from '@react-google-maps/api';
 import Model from '@tripian/model';

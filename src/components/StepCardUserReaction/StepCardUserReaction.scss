@@ -444,6 +444,7 @@
   justify-content: center;
   align-items: center;
   background: var(--primary-color);
+  width: 100%;
 
   .duration {
     position: relative;
@@ -454,6 +455,9 @@
     border: 1px solid rgba(var(--primary-color-rgb), 0.25);
     // user-select: none;
     gap: 0.125rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     .durationHours {
       color: #fff;
       font-size: 0.825rem;

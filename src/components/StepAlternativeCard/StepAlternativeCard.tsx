@@ -14,6 +14,10 @@ interface IStepAlternativeCard {
   hideReservationIcon: boolean;
   hideTourTicketIcons: boolean;
   hideOfferIcon: boolean;
+  gygTourIds: number[];
+  bbTourIds: number[];
+  viatorTourIds: string[];
+  toristyTourIds: string[];
   t: (value: Model.TranslationKey) => string;
 }
 
@@ -28,6 +32,10 @@ const StepAlternativeCard: React.FC<IStepAlternativeCard> = ({
   hideReservationIcon,
   hideTourTicketIcons,
   hideOfferIcon,
+  gygTourIds,
+  bbTourIds,
+  viatorTourIds,
+  toristyTourIds,
   t,
 }) => (
   <PoiRefCard
@@ -42,6 +50,10 @@ const StepAlternativeCard: React.FC<IStepAlternativeCard> = ({
     hideReservationIcon={hideReservationIcon}
     hideTourTicketIcons={hideTourTicketIcons}
     hideOfferIcon={hideOfferIcon}
+    gygTourIds={gygTourIds}
+    bbTourIds={bbTourIds}
+    viatorTourIds={viatorTourIds}
+    toristyTourIds={toristyTourIds}
     t={t}
   />
 );

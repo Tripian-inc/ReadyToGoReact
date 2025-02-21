@@ -13,12 +13,12 @@ import classes from './Feedback.scss';
 interface IFeedback {
   feedbackSubjects: Model.FeedbackSubjects[];
   sendFeedback: (value: Model.FeedbackRequest) => Promise<void>;
-  showModal: boolean;
-  setShowModal: () => void;
+  showModal?: boolean;
+  setShowModal?: () => void;
   t: (value: Model.TranslationKey) => string;
 }
 
-const Feedback: React.FC<IFeedback> = ({ feedbackSubjects, sendFeedback, showModal, setShowModal, t }) => {
+const Feedback: React.FC<IFeedback> = ({ feedbackSubjects, sendFeedback, showModal = true, setShowModal, t }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [feedback, setFeedBack] = useState<Model.FeedbackRequest>({
     subjectType: feedbackSubjects[0].subjectType,
@@ -50,6 +50,67 @@ const Feedback: React.FC<IFeedback> = ({ feedbackSubjects, sendFeedback, showMod
   //     setFeedBack({ ...feedback, desc: input.trimStart() });
   //   }
   // };
+
+  if (setShowModal === undefined) {
+    return (
+      <div>
+        <div className="row m0">
+          <div className="col col12 p5 m0">
+            {loading ? (
+              <div className={classes.feedbackLoading}>
+                <PreLoading />
+              </div>
+            ) : (
+              <>
+                <div className="col col12">
+                  <h6 className="mt8 mb4">{t('support.feedback.modal.title')}</h6>
+                  <Dropdown defaultValue={feedbackSubjects[0].title} options={options} selectChange={handleChange} skippable={false} />
+                </div>
+                <div className="col col12">
+                  <h6 className="mt8 mb4">{t('support.feedback.modal.messageTitle')}</h6>
+                  <textarea
+                    name="problem"
+                    rows={5}
+                    className={classes.feedbackDesc}
+                    value={feedback.desc}
+                    onChange={(event) => {
+                      setFeedBack({ ...feedback, desc: event.target.value });
+                      // numbersAndLettersOnly(event.target.value);
+                    }}
+                  />
+                </div>
+                <div className="row m0 center">
+                  <div className="col col6 my2">
+                    <Button
+                      color="primary"
+                      text={t('support.feedback.modal.close')}
+                      onClick={() => {
+                        setFeedbackDefault();
+                      }}
+                    />
+                  </div>
+                  <div className="col col6 my2">
+                    <Button
+                      color="primary"
+                      text={t('support.feedback.modal.send')}
+                      onClick={() => {
+                        setLoading(true);
+                        sendFeedback(feedback).finally(() => {
+                          setLoading(false);
+                          setFeedbackDefault();
+                        });
+                      }}
+                      disabled={feedback.desc.trim() === ''}
+                    />
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <Modal

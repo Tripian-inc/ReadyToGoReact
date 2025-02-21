@@ -5,7 +5,6 @@
 import React from 'react';
 import Model from '@tripian/model';
 import CloseIconButton from '../Button/Icons/CloseIconButton/CloseIconButton';
-import Feedback from '../../FeedBack/FeedBack';
 import ToggleSwitch from '../ToggleSwitch/ToggleSwitch';
 import classes from './SideNavigation.scss';
 
@@ -28,14 +27,9 @@ interface ISideNavigation {
   open?: boolean;
   closed: () => void;
   showBbButton?: boolean;
-  feedbackSubjects: Model.FeedbackSubjects[];
-  loadingFeedback: boolean;
-  sendFeedback: (value: Model.FeedbackRequest) => Promise<void>;
   themeSwitchChecked: boolean;
   themeSwitchCheckedOnchange: (checked: boolean) => void;
   showThemeSwitch: boolean;
-  showFeedbackModal: boolean;
-  setShowFeedbackModal: (show: boolean) => void;
   // showGoogleTranslate: boolean;
   languageOptions?: Model.LangCode[];
   selectedLanguage: string;
@@ -49,14 +43,9 @@ const SideNavigation: React.FC<ISideNavigation> = ({
   closed,
   open = false,
   showBbButton = false,
-  feedbackSubjects,
-  loadingFeedback,
-  sendFeedback,
   themeSwitchChecked,
   themeSwitchCheckedOnchange,
   showThemeSwitch,
-  showFeedbackModal,
-  setShowFeedbackModal,
   // showGoogleTranslate,
   languageOptions,
   selectedLanguage,
@@ -238,7 +227,6 @@ const SideNavigation: React.FC<ISideNavigation> = ({
           </a>
         )}
       </div>
-      {!loadingFeedback && <Feedback feedbackSubjects={feedbackSubjects} sendFeedback={sendFeedback} showModal={showFeedbackModal} setShowModal={() => setShowFeedbackModal(!showFeedbackModal)} t={t} />}
     </>
   );
 };

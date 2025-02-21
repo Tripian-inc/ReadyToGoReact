@@ -1,14 +1,14 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import { helper } from '@tripian/model';
+import Model, { helper } from '@tripian/model';
 
-const peopleCountOptions = [
-  { value: 1, label: '1 person' },
-  { value: 2, label: '2 people' },
-  { value: 3, label: '3 people' },
-  { value: 4, label: '4 people' },
-  { value: 5, label: '5 people' },
-  { value: 6, label: '6 people' },
-  { value: 7, label: '7 people' },
+const peopleCountOptions = (t: (value: Model.TranslationKey) => string) => [
+  { value: 1, label: `1 ${t('reservation.person')}` },
+  { value: 2, label: `2 ${t('reservation.people')}` },
+  { value: 3, label: `3 ${t('reservation.people')}` },
+  { value: 4, label: `4 ${t('reservation.people')}` },
+  { value: 5, label: `5 ${t('reservation.people')}` },
+  { value: 6, label: `6 ${t('reservation.people')}` },
+  { value: 7, label: `7 ${t('reservation.people')}` },
 ];
 
 const yelpHourRangeOptions: Array<{ value: string }> = [];

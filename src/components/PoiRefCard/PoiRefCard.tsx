@@ -16,6 +16,7 @@ import CustomPopover from '../base/CustomPopover/CustomPopover';
 import StepTimes from '../StepTimes/StepTimes';
 import { MustTry } from '../base/Svg/Icons';
 import emptyImageData from '../../constant/emptyImage';
+import TourTicketLazyLoading from '../TourTicketLazyLoading/TourTicketLazyLoading';
 import classes from './PoiRefCard.scss';
 
 interface IPoiRefCard {
@@ -32,6 +33,11 @@ interface IPoiRefCard {
   hideReservationIcon: boolean;
   hideTourTicketIcons: boolean;
   hideOfferIcon: boolean;
+  gygTourIds: number[];
+  bbTourIds: number[];
+  viatorTourIds: string[];
+  toristyTourIds: string[];
+  tourTicketProductsLoading?: boolean;
   t: (value: Model.TranslationKey) => string;
 }
 
@@ -49,6 +55,11 @@ const PoiRefCard: React.FC<IPoiRefCard> = ({
   hideReservationIcon = false,
   hideTourTicketIcons = false,
   hideOfferIcon,
+  gygTourIds,
+  bbTourIds,
+  viatorTourIds,
+  toristyTourIds,
+  tourTicketProductsLoading,
   t,
 }) => {
   const [show, setShow] = useState<boolean>(false);
@@ -156,30 +167,38 @@ const PoiRefCard: React.FC<IPoiRefCard> = ({
               <div className={classes.poiRefCardFooter}>
                 {stepDayInfo}
                 <div className={classes.poiAbilities}>
-                  {helper.tourAvailable(poi.bookings, TOUR_PROVIDER_IDS) && !hideTourTicketIcons && (
-                    <div className={classes.poiAbilityItem}>
-                      <Tour fill="var(--text-primary-color)" />
+                  {tourTicketProductsLoading && poi.category.some((c) => c.id === 1) ? (
+                    <div className={classes.loadingIndicator}>
+                      <TourTicketLazyLoading />
                     </div>
-                  )}
-                  {helper.ticketAvailable(poi.bookings, TICKET_PROVIDER_IDS) && !hideTourTicketIcons && (
-                    <div className={classes.poiAbilityItem}>
-                      <Ticket fill="var(--text-primary-color)" />
-                    </div>
-                  )}
-                  {helper.restaurantReservationAvailable(poi.bookings, RESTAURANT_RESERVATION_PROVIDER_IDS) && !hideReservationIcon && (
-                    <div className={classes.poiAbilityItem}>
-                      <Reservation />
-                    </div>
-                  )}
-                  {helper.offerAvailable(poi.offers) && !hideOfferIcon && (
-                    <div className={classes.poiAbilityItem}>
-                      <Offer />
-                    </div>
-                  )}
-                  {poi.mustTries.length > 0 && (
-                    <div className={classes.poiAbilityItem}>
-                      <MustTry />
-                    </div>
+                  ) : (
+                    <>
+                      {helper.tourAvailable(poi.bookings, TOUR_PROVIDER_IDS, gygTourIds, bbTourIds, viatorTourIds, toristyTourIds) && !hideTourTicketIcons && (
+                        <div className={classes.poiAbilityItem}>
+                          <Tour fill="var(--text-primary-color)" />
+                        </div>
+                      )}
+                      {helper.ticketAvailable(poi.bookings, TICKET_PROVIDER_IDS, gygTourIds, bbTourIds, viatorTourIds, toristyTourIds) && !hideTourTicketIcons && (
+                        <div className={classes.poiAbilityItem}>
+                          <Ticket fill="var(--text-primary-color)" />
+                        </div>
+                      )}
+                      {helper.restaurantReservationAvailable(poi.bookings, RESTAURANT_RESERVATION_PROVIDER_IDS) && !hideReservationIcon && (
+                        <div className={classes.poiAbilityItem}>
+                          <Reservation />
+                        </div>
+                      )}
+                      {helper.offerAvailable(poi.offers) && !hideOfferIcon && (
+                        <div className={classes.poiAbilityItem}>
+                          <Offer />
+                        </div>
+                      )}
+                      {poi.mustTries.length > 0 && (
+                        <div className={classes.poiAbilityItem}>
+                          <MustTry />
+                        </div>
+                      )}
+                    </>
                   )}
                 </div>
               </div>

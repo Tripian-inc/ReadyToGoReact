@@ -32,6 +32,10 @@ interface IPoiInfo {
   replace?: boolean;
   hideActionButtons?: boolean;
   hideFavoriteIcon?: boolean;
+  hideScore?: boolean;
+  hidePartOfDay?: boolean;
+  hideFeatures?: boolean;
+  hideCuisine?: boolean;
   planDate?: string;
   bookingButtonClick?: (productId: string, poi: Model.Poi) => void;
   favoriteLoading: boolean;
@@ -39,9 +43,12 @@ interface IPoiInfo {
   hideBookingButton: boolean;
   square?: boolean;
   hideTours: boolean;
-  getTourInfo?: (productId: string) => void;
-  TOUR_PROVIDER_IDS: Model.PROVIDER_ID[];
-  TICKET_PROVIDER_IDS: Model.PROVIDER_ID[];
+  getTourInfo?: (productId: string, poi: Model.Poi) => void;
+  // TOUR_PROVIDER_IDS: Model.PROVIDER_ID[];
+  // TICKET_PROVIDER_IDS: Model.PROVIDER_ID[];
+  tourProducts: Model.BookingProduct[];
+  ticketProducts: Model.BookingProduct[];
+  tourTicketProductsLoading: boolean;
   RESTAURANT_RESERVATION_PROVIDER_IDS: Model.PROVIDER_ID[];
   myOffers: Model.Poi[];
   isLoadingOffer: (offerId: number) => boolean;
@@ -69,6 +76,11 @@ const PoiInfo: React.FC<IPoiInfo> = ({
   stepOrder = -1,
   replace = false,
   hideActionButtons = false,
+  hideFavoriteIcon = false,
+  hideScore = false,
+  hidePartOfDay = false,
+  hideFeatures = false,
+  hideCuisine = false,
   bookingButtonClick,
   planDate,
   favoriteLoading,
@@ -77,8 +89,11 @@ const PoiInfo: React.FC<IPoiInfo> = ({
   square = true,
   hideTours,
   getTourInfo,
-  TOUR_PROVIDER_IDS,
-  TICKET_PROVIDER_IDS,
+  tourProducts,
+  ticketProducts,
+  tourTicketProductsLoading,
+  // TOUR_PROVIDER_IDS,
+  // TICKET_PROVIDER_IDS,
   RESTAURANT_RESERVATION_PROVIDER_IDS,
   myOffers,
   isLoadingOffer,
@@ -116,11 +131,11 @@ const PoiInfo: React.FC<IPoiInfo> = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [openTours]);
 
-  const ticketProviderBooking: Model.Booking | undefined = poi.bookings.find((booking: Model.Booking) => TICKET_PROVIDER_IDS.includes(booking.providerId));
-  const ticketProducts: Model.BookingProduct[] = ticketProviderBooking?.products.filter((product) => product.info.includes(Model.BOOKING_PRODUCT_INFO.TICKET)).reverse() ?? [];
+  // const ticketProviderBooking: Model.Booking | undefined = poi.bookings.find((booking: Model.Booking) => TICKET_PROVIDER_IDS.includes(booking.providerId));
+  // const ticketProducts: Model.BookingProduct[] = ticketProviderBooking?.products.filter((product) => product.info.includes(Model.BOOKING_PRODUCT_INFO.TICKET)).reverse() ?? [];
 
-  const tourProviderBooking = poi.bookings.find((booking: Model.Booking) => TOUR_PROVIDER_IDS.includes(booking.providerId));
-  const tourProducts: Model.BookingProduct[] = tourProviderBooking?.products.filter((product) => !product.info.includes(Model.BOOKING_PRODUCT_INFO.TICKET)) ?? [];
+  // const tourProviderBooking = poi.bookings.find((booking: Model.Booking) => TOUR_PROVIDER_IDS.includes(booking.providerId));
+  // const tourProducts: Model.BookingProduct[] = tourProviderBooking?.products.filter((product) => !product.info.includes(Model.BOOKING_PRODUCT_INFO.TICKET)) ?? [];
 
   return (
     <div
@@ -132,7 +147,7 @@ const PoiInfo: React.FC<IPoiInfo> = ({
       }}
     >
       <div className={classes.poiImage}>
-        {score ? <div className={classes.stepMatch}>{`${score.toFixed(0)}% ${t('trips.myTrips.itinerary.step.poi.match')}`}</div> : null}
+        {!hideScore && score ? <div className={classes.stepMatch}>{`${score.toFixed(0)}% ${t('trips.myTrips.itinerary.step.poi.match')}`}</div> : null}
         <PoiInfoImage
           poi={poi}
           close={() => {
@@ -148,6 +163,7 @@ const PoiInfo: React.FC<IPoiInfo> = ({
           </div>
         )}
       </div>
+
       {scoreDetails && scoreDetails.length > 0 && (
         <div className={classes.scoreDetails}>
           {scoreDetails
@@ -162,7 +178,10 @@ const PoiInfo: React.FC<IPoiInfo> = ({
       )}
       <PoiInfoText
         poi={poi}
-        hideButtons={false}
+        hideFavoriteIcon={hideFavoriteIcon}
+        hidePartOfDay={hidePartOfDay}
+        hideFeatures={hideFeatures}
+        hideCuisine={hideCuisine}
         favorite={favorite}
         favoriteLoading={favoriteLoading}
         favoriteClick={(fav: boolean) => {
@@ -177,6 +196,12 @@ const PoiInfo: React.FC<IPoiInfo> = ({
         reservationUrl={reservationUrl}
         hideBookingButton={hideBookingButton}
         bookingButtonClick={bookingButtonClick}
+        showTourTicketButton={!hideTours && (ticketProducts.length > 0 || tourProducts.length > 0)}
+        tourTicketButtonClick={() => {
+          setOpenTours(true);
+          myRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
+        }}
+        tourTicketProductsLoading={tourTicketProductsLoading}
         RESTAURANT_RESERVATION_PROVIDER_IDS={RESTAURANT_RESERVATION_PROVIDER_IDS}
         t={t}
       />
@@ -208,8 +233,6 @@ const PoiInfo: React.FC<IPoiInfo> = ({
                 />
               </div>
             );
-
-            return null;
           })}
           <Modal show={optInModalWarningMessage.length > 0} backdropClick={() => setOptInModalWarningMessage([])}>
             <div className="center py5">
@@ -227,39 +250,26 @@ const PoiInfo: React.FC<IPoiInfo> = ({
         </div>
       )}
 
-      {!hideTours && (ticketProducts.length > 0 || tourProducts.length > 0) ? (
-        <div ref={myRef} className={classes.openTours}>
-          <Button
-            text={t('trips.myTrips.itinerary.step.poi.tourTicket.buttonText')}
-            color="primary"
-            onClick={() => {
-              setOpenTours(true);
-              myRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
-            }}
-          />
-        </div>
-      ) : null}
-
       {openTours && !hideTours && ticketProducts.length > 0 ? (
-        <div className="col col12 p5">
+        <div ref={myRef} className="col col12 p5">
           <h2 className="mb1 mt3">{t('trips.myTrips.itinerary.step.poi.tourTicket.ticket.title')}</h2>
           {ticketProducts.map((bookingProduct) => (
             <div key={bookingProduct.id} className="pt4">
-              <TourRefCardProduct bookingProduct={bookingProduct} clicked={() => (getTourInfo ? getTourInfo(bookingProduct.id.toString()) : null)} t={t} />
+              <TourRefCardProduct bookingProduct={bookingProduct} clicked={() => (getTourInfo ? getTourInfo(bookingProduct.id.toString(), poi) : null)} t={t} />
             </div>
           ))}
         </div>
       ) : null}
 
       {openTours && !hideTours && tourProducts.length > 0 ? (
-        <div className="col col12 p5">
+        <div ref={myRef} className="col col12 p5">
           <h2 className="mb1 mt3">{t('trips.myTrips.itinerary.step.poi.tourTicket.tour.title')}</h2>
           <span className={classes.poiInfotourCardHeader}>
             {t('trips.myTrips.itinerary.step.poi.tourTicket.tour.covering')} {poi.name || ''}
           </span>
           {tourProducts.map((bookingProduct) => (
             <div key={bookingProduct.id} className="pt4">
-              <TourRefCardProduct bookingProduct={bookingProduct} clicked={() => (getTourInfo ? getTourInfo(bookingProduct.id.toString()) : null)} t={t} />
+              <TourRefCardProduct bookingProduct={bookingProduct} clicked={() => (getTourInfo ? getTourInfo(bookingProduct.id.toString(), poi) : null)} t={t} />
             </div>
           ))}
         </div>

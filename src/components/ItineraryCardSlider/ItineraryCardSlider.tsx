@@ -23,6 +23,20 @@ const ItineraryCardSlider: React.FC<IItineraryCardSlider> = ({ slidesPerView = 4
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
+    breakpoints: {
+      320: {
+        slidesPerView: 2,
+      },
+      640: {
+        slidesPerView: 3,
+      },
+      1024: {
+        slidesPerView: 4,
+      },
+      2048: {
+        slidesPerView: 6,
+      },
+    },
     renderPrevButton: () => (
       <div className="swiper-button-prev">
         <PreviousArrow size="2rem" />
@@ -38,7 +52,7 @@ const ItineraryCardSlider: React.FC<IItineraryCardSlider> = ({ slidesPerView = 4
   return (
     <div className={classes.cardSlider}>
       <Swiper {...params} containerClass={classes.swiperContainer} speed={600} shouldSwiperUpdate touchStartForcePreventDefault={false}>
-        {children as ReactElement<any>}
+        {children as ReactElement<unknown>}
       </Swiper>
     </div>
   );

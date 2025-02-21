@@ -29,6 +29,12 @@
   .span2 {
     font-size: 1rem;
     letter-spacing: 0.00938em;
+    user-select: none;
+  }
+
+  .arrowIcon {
+    margin-left: 0.5rem;
+    margin-top: 0.125rem;
   }
 }
 

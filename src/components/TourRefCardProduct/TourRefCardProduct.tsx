@@ -25,7 +25,8 @@ const TourRefCardProduct: React.FC<ITourRefCardProduct> = ({ bookingProduct, cli
   }, [bookingProduct.currency]);
 
   return (
-    <RefCard image={bookingProduct.image || ''} title={bookingProduct.title} butonText={t('trips.myTrips.localExperiences.tourDetails.bookNow')} clicked={() => clicked(bookingProduct)}>
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+    <RefCard image={bookingProduct.image || ''} title={bookingProduct.title} butonText={t('trips.myTrips.localExperiences.tourDetails.bookNow')} imageText={bookingProduct.provider} clicked={() => clicked(bookingProduct)}>
       {bookingProduct.rating && bookingProduct.rating > 3.6 && bookingProduct.ratingCount && bookingProduct.ratingCount > 9 ? (
         <div className={classes.tourRefCardRating}>
           <RatingStars rating={(bookingProduct?.rating * 20).toString()} />

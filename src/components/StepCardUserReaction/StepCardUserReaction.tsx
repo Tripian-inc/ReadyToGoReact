@@ -22,6 +22,7 @@ import CustomPopover from '../base/CustomPopover/CustomPopover';
 import Info2 from '../base/Svg/Icons/Info2';
 import { EditHour, MustTry } from '../base/Svg/Icons';
 import emptyImageData from '../../constant/emptyImage';
+import TourTicketLazyLoading from '../TourTicketLazyLoading/TourTicketLazyLoading';
 import classes from './StepCardUserReaction.scss';
 
 interface IStepCardUserReaction {
@@ -33,6 +34,10 @@ interface IStepCardUserReaction {
   alternativeReplace: (alternativePoi: Model.Poi) => void;
   showAlternativesChange: (stepId: number, show: boolean) => void;
   showAlternatives?: boolean;
+  showRemoveReplaceButtons?: boolean;
+  hideScore?: boolean;
+  hideStepsTime?: boolean;
+  isWidget?: boolean;
   // user reaction
   thumbs?: number;
   thumbsLoading: boolean;
@@ -47,6 +52,13 @@ interface IStepCardUserReaction {
   hideReservationIcon: boolean;
   hideTourTicketIcons: boolean;
   hideOfferIcon: boolean;
+  hideFeatures?: boolean;
+  hideCuisine?: boolean;
+  gygTourIds: number[];
+  bbTourIds: number[];
+  viatorTourIds: string[];
+  toristyTourIds: string[];
+  tourTicketProductsLoading: boolean;
   t: (value: Model.TranslationKey) => string;
 }
 
@@ -59,6 +71,10 @@ const StepCardUserReaction: React.FC<IStepCardUserReaction> = ({
   alternativeReplace,
   showAlternativesChange,
   showAlternatives = false,
+  showRemoveReplaceButtons = true,
+  hideScore = false,
+  hideStepsTime = false,
+  isWidget = false,
   thumbs,
   thumbsLoading,
   thumbsClicked,
@@ -72,6 +88,13 @@ const StepCardUserReaction: React.FC<IStepCardUserReaction> = ({
   hideReservationIcon = false,
   hideTourTicketIcons = false,
   hideOfferIcon,
+  hideFeatures = false,
+  hideCuisine = false,
+  gygTourIds,
+  bbTourIds,
+  viatorTourIds,
+  toristyTourIds,
+  tourTicketProductsLoading,
   t,
 }) => {
   const myRef = React.createRef<HTMLDivElement>();
@@ -81,6 +104,7 @@ const StepCardUserReaction: React.FC<IStepCardUserReaction> = ({
 
   const placeImg = step.poi.image === null ? emptyImageData : helper.imgUrl(`${step.poi.image.url}`, 256, 256);
   const attraction = helper.getCategoryGroup(step.poi.category[0].id) === Model.POI_CATEGORY_GROUP.ATTRACTION;
+  const shopping = helper.getCategoryGroup(step.poi.category[0].id) === Model.POI_CATEGORY_GROUP.SHOPPING;
 
   const stepCardImageClasses = [classes.stepCardImage];
   if (step.poi.status === false) {
@@ -143,112 +167,18 @@ const StepCardUserReaction: React.FC<IStepCardUserReaction> = ({
   }, [ref, show, step.poi.duration, step.times.from, step.times.to, t, timesClicked]);
 
   let Thumbs;
-  if (thumbs === 1) {
-    Thumbs = (
-      <div className={classes.buttons}>
-        <div className={classes.thumbs}>
-          {thumbsLoading ? (
-            <div className={classes.thumbsLoading}>
-              <PreLoading size="small" />
-            </div>
-          ) : (
-            <div
-              className={classes.like}
-              onKeyDown={() => {}}
-              role="button"
-              tabIndex={0}
-              onClick={(event) => {
-                event.stopPropagation();
-                userReactionUndo();
-              }}
-            >
-              {' '}
-            </div>
-          )}
-        </div>
-      </div>
-    );
-  } else if (thumbs === 0) {
-    Thumbs = (
-      <div className={classes.buttons}>
-        {thumbsLoading ? (
-          <div className={classes.thumbsLoading}>
-            <PreLoading color="#000" size="small" />
-          </div>
-        ) : (
-          <>
-            <div className={classes.thumbs}>
-              <div
-                className={classes.likeEmpty}
-                onKeyDown={() => {}}
-                role="button"
-                tabIndex={0}
-                onClick={(event) => {
-                  event.stopPropagation();
-                  thumbsClicked(+1);
-                }}
-              >
-                {' '}
+  if (showRemoveReplaceButtons) {
+    if (thumbs === 1) {
+      Thumbs = (
+        <div className={classes.buttons}>
+          <div className={classes.thumbs}>
+            {thumbsLoading ? (
+              <div className={classes.thumbsLoading}>
+                <PreLoading size="small" />
               </div>
-            </div>
-            <div className={classes.thumbs}>
+            ) : (
               <div
-                className={classes.dislikeEmpty}
-                onKeyDown={() => {}}
-                role="button"
-                tabIndex={0}
-                onClick={(event) => {
-                  event.stopPropagation();
-                  thumbsClicked(-1);
-                }}
-              >
-                {' '}
-              </div>
-            </div>
-          </>
-        )}
-      </div>
-    );
-  } else if (thumbs === -1) {
-    Thumbs = (
-      <div className={classes.buttons}>
-        <div className={classes.thumbs}>
-          {thumbsLoading ? (
-            <div className={classes.thumbsLoading}>
-              <PreLoading color="#000" size="small" />
-            </div>
-          ) : (
-            <>
-              <div
-                className={classes.removePlaceButton}
-                onKeyDown={() => {}}
-                role="button"
-                tabIndex={0}
-                onClick={(event) => {
-                  event.stopPropagation();
-                  userReactionRemoveStep();
-                }}
-              >
-                {t('trips.myTrips.itinerary.step.thumbs.remove')}
-              </div>
-              {alternativePois.length > 0 && (
-                <div
-                  className={classes.showAlternativeButton}
-                  onKeyDown={() => {}}
-                  role="button"
-                  tabIndex={0}
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    showAlternativesChange(step.id, !showAlternatives);
-                    myRef.current?.scrollIntoView({ behavior: 'auto' });
-                  }}
-                >
-                  {t('trips.myTrips.itinerary.step.thumbs.replace.title')}
-                </div>
-              )}
-
-              <div
-                className={classes.dislike}
+                className={classes.like}
                 onKeyDown={() => {}}
                 role="button"
                 tabIndex={0}
@@ -259,18 +189,116 @@ const StepCardUserReaction: React.FC<IStepCardUserReaction> = ({
               >
                 {' '}
               </div>
+            )}
+          </div>
+        </div>
+      );
+    } else if (thumbs === 0) {
+      Thumbs = (
+        <div className={classes.buttons}>
+          {thumbsLoading ? (
+            <div className={classes.thumbsLoading}>
+              <PreLoading color="#000" size="small" />
+            </div>
+          ) : (
+            <>
+              <div className={classes.thumbs}>
+                <div
+                  className={classes.likeEmpty}
+                  onKeyDown={() => {}}
+                  role="button"
+                  tabIndex={0}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    thumbsClicked(+1);
+                  }}
+                >
+                  {' '}
+                </div>
+              </div>
+              <div className={classes.thumbs}>
+                <div
+                  className={classes.dislikeEmpty}
+                  onKeyDown={() => {}}
+                  role="button"
+                  tabIndex={0}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    thumbsClicked(-1);
+                  }}
+                >
+                  {' '}
+                </div>
+              </div>
             </>
           )}
         </div>
-      </div>
-    );
+      );
+    } else if (thumbs === -1) {
+      Thumbs = (
+        <div className={classes.buttons}>
+          <div className={classes.thumbs}>
+            {thumbsLoading ? (
+              <div className={classes.thumbsLoading}>
+                <PreLoading color="#000" size="small" />
+              </div>
+            ) : (
+              <>
+                <>
+                  <div
+                    className={classes.removePlaceButton}
+                    onKeyDown={() => {}}
+                    role="button"
+                    tabIndex={0}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      userReactionRemoveStep();
+                    }}
+                  >
+                    {t('trips.myTrips.itinerary.step.thumbs.remove')}
+                  </div>
+                  {alternativePois.length > 0 && (
+                    <div
+                      className={classes.showAlternativeButton}
+                      onKeyDown={() => {}}
+                      role="button"
+                      tabIndex={0}
+                      onClick={(event) => {
+                        event.stopPropagation();
+                        showAlternativesChange(step.id, !showAlternatives);
+                        myRef.current?.scrollIntoView({ behavior: 'auto' });
+                      }}
+                    >
+                      {t('trips.myTrips.itinerary.step.thumbs.replace.title')}
+                    </div>
+                  )}
+                </>
+
+                <div
+                  className={classes.dislike}
+                  onKeyDown={() => {}}
+                  role="button"
+                  tabIndex={0}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    userReactionUndo();
+                  }}
+                >
+                  {' '}
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      );
+    }
   }
 
   let info;
   if (step.poi.status === false) {
     if (step.poi.name.includes('Permanently Closed')) info = <div className={classes.statusWarning}>{t('trips.myTrips.itinerary.step.status.permanentlyClosed')}</div>;
     else info = <div className={classes.statusWarning}>{t('trips.myTrips.itinerary.step.status.temporarilyClosed')}</div>;
-  } else if (attraction) {
+  } else if (attraction || shopping) {
     info = (
       <>
         {step.poi.rating !== null && (
@@ -316,27 +344,27 @@ const StepCardUserReaction: React.FC<IStepCardUserReaction> = ({
         </div>
 
         <div className={classes.stepInfo}>
-          {uniqueCuisines.length > 0 ? (
+          {uniqueCuisines.length > 0 && !hideCuisine && (
             <>
               <span className={`${classes.cuisines} mt1`}>
                 <b>{t('trips.myTrips.itinerary.step.cuisine')}: </b>
                 {uniqueCuisines.join(', ')}
               </span>
             </>
-          ) : null}
-          {step.poi.tags.length > 0 ? (
+          )}
+          {step.poi.tags.length > 0 && !hideFeatures && (
             <span className={classes.features}>
               <b>{t('trips.myTrips.itinerary.step.features')}: </b>
               {step.poi.tags.length > 0 ? step.poi.tags.join(', ') : 'empty'}
             </span>
-          ) : null}
+          )}
         </div>
       </>
     );
   }
 
   return (
-    <div className={classes.stepCardMain}>
+    <div style={{ marginLeft: isWidget ? '1.5rem' : '0' }} className={classes.stepCardMain}>
       <div
         className={classes.stepCard}
         onKeyDown={() => {}}
@@ -351,8 +379,9 @@ const StepCardUserReaction: React.FC<IStepCardUserReaction> = ({
           {/* <img className={classes.figureImg} src={placeImg} alt={step.poi.name} /> */}
           <ImgLazy src={placeImg} alt={step.poi.name} x={256} y={256} />
           <div className={classes.stepOrder}>{`${step.order + 1}`}</div>
-          {step.score ? <div className={classes.stepMatch}>{`${step.score.toFixed(0)}% ${t('trips.myTrips.itinerary.step.poi.match')}`}</div> : null}
-          {stepsTime}
+          {!hideScore && step.score && <div className={classes.stepMatch}>{`${step.score.toFixed(0)}%`}</div>}
+
+          {!hideStepsTime && stepsTime}
           {/* <span className={classes.hours}>{`${step.hours.from}-${step.hours.to}`}</span> */}
         </div>
         <div className={classes.stepCardinformation}>
@@ -368,30 +397,38 @@ const StepCardUserReaction: React.FC<IStepCardUserReaction> = ({
           </div>
           {info}
           <div className={classes.poiAbilities}>
-            {helper.tourAvailable(step.poi.bookings, TOUR_PROVIDER_IDS) && !hideTourTicketIcons && (
-              <div className={classes.poiAbilityItem}>
-                <Tour fill="#000" />
+            {tourTicketProductsLoading && step.poi.category.some((c) => c.id === 1) ? (
+              <div className={classes.loadingIndicator}>
+                <TourTicketLazyLoading />
               </div>
-            )}
-            {helper.ticketAvailable(step.poi.bookings, TICKET_PROVIDER_IDS) && !hideTourTicketIcons && (
-              <div className={classes.poiAbilityItem}>
-                <Ticket fill="#000" />
-              </div>
-            )}
-            {helper.restaurantReservationAvailable(step.poi.bookings, RESTAURANT_RESERVATION_PROVIDER_IDS) && !hideReservationIcon && (
-              <div className={classes.poiAbilityItem}>
-                <Reservation />
-              </div>
-            )}
-            {helper.offerAvailable(step.poi.offers) && !hideOfferIcon && (
-              <div className={classes.poiAbilityItem}>
-                <Offer />
-              </div>
-            )}
-            {step.poi.mustTries.length > 0 && (
-              <div className={classes.poiAbilityItem}>
-                <MustTry />
-              </div>
+            ) : (
+              <>
+                {helper.tourAvailable(step.poi.bookings, TOUR_PROVIDER_IDS, gygTourIds, bbTourIds, viatorTourIds, toristyTourIds) && !hideTourTicketIcons && (
+                  <div className={classes.poiAbilityItem}>
+                    <Tour fill="#000" />
+                  </div>
+                )}
+                {helper.ticketAvailable(step.poi.bookings, TICKET_PROVIDER_IDS, gygTourIds, bbTourIds, viatorTourIds, toristyTourIds) && !hideTourTicketIcons && (
+                  <div className={classes.poiAbilityItem}>
+                    <Ticket fill="#000" />
+                  </div>
+                )}
+                {helper.restaurantReservationAvailable(step.poi.bookings, RESTAURANT_RESERVATION_PROVIDER_IDS) && !hideReservationIcon && (
+                  <div className={classes.poiAbilityItem}>
+                    <Reservation />
+                  </div>
+                )}
+                {helper.offerAvailable(step.poi.offers) && !hideOfferIcon && (
+                  <div className={classes.poiAbilityItem}>
+                    <Offer />
+                  </div>
+                )}
+                {step.poi.mustTries.length > 0 && (
+                  <div className={classes.poiAbilityItem}>
+                    <MustTry />
+                  </div>
+                )}
+              </>
             )}
           </div>
 
@@ -450,6 +487,10 @@ const StepCardUserReaction: React.FC<IStepCardUserReaction> = ({
                 hideReservationIcon={hideReservationIcon}
                 hideTourTicketIcons={hideTourTicketIcons}
                 hideOfferIcon={hideOfferIcon}
+                gygTourIds={gygTourIds}
+                bbTourIds={bbTourIds}
+                viatorTourIds={viatorTourIds}
+                toristyTourIds={toristyTourIds}
                 t={t}
               />
             ))

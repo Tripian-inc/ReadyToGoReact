@@ -3,8 +3,9 @@
 import React, { useMemo } from 'react';
 import Model, { helper } from '@tripian/model';
 import moment from 'moment';
-import classes from './TripCard.scss';
 import ImgLazy from '../base/ImgLazy/ImgLazy';
+import { Edit } from '../base/Svg/Icons';
+import classes from './TripCard.scss';
 
 // import PreLoading from '../base/PreLoading/PreLoading';
 
@@ -17,10 +18,11 @@ interface ITripCard {
   showShareTrip: boolean;
   shareTrip: (tripReference: Model.TripReference) => void;
   clicked: (tripReference: Model.TripReference) => void;
+  tripNameClicked: (tripReference: Model.TripReference) => void;
   t: (value: Model.TranslationKey) => string;
 }
 
-const TripCard: React.FC<ITripCard> = ({ tripReference, /* icsFileDownload, icsLoading, */ editTrip, deleteTrip, showShareTrip, shareTrip, clicked, t }) => {
+const TripCard: React.FC<ITripCard> = ({ tripReference, /* icsFileDownload, icsLoading, */ editTrip, deleteTrip, showShareTrip, shareTrip, clicked, tripNameClicked, t }) => {
   // const [fakeImg, setFakeImg] = useState<boolean>(true);
 
   moment.locale(window.twindow.langCode);
@@ -144,8 +146,24 @@ const TripCard: React.FC<ITripCard> = ({ tripReference, /* icsFileDownload, icsL
       <div className={cardImageClasses.join(' ')}>
         {/* {fakeImg ? <svg viewBox="0 0 800 500" /> : <img src={cityImg} alt={tripReference.city.name} className={tripImageClass} />} */}
         <ImgLazy src={cityImg} alt={tripReference.city.name} x={800} y={500} />
-        <h2 className={classes.cardTitle}>{tripReference.city.name} </h2>
-        <h6 className={classes.howManyDays}>{`(${howManyDays} ${t('trips.days')})`}</h6>
+        <h2 className={classes.cardTitle}>{tripReference.city.name}</h2>
+        {tripReference.tripProfile.tripName && (
+          <div
+            className={classes.tripName}
+            onKeyDown={() => {}}
+            role="button"
+            tabIndex={0}
+            onClick={(event) => {
+              event.stopPropagation();
+              tripNameClicked(tripReference);
+            }}
+          >
+            <h5>{tripReference.tripProfile.tripName}</h5>
+            <Edit size="1rem" fill="#fff" />
+          </div>
+        )}
+
+        <h6 className={classes.howManyDays} style={tripReference.tripProfile.tripName ? { top: '1.5rem' } : undefined}>{`(${howManyDays} ${t('trips.days')})`}</h6>
         {buttons}
       </div>
       <div className={classes.cardContent}>

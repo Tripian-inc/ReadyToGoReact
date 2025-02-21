@@ -24,17 +24,37 @@ interface IVoucherOfferCardItemMobile {
 const VoucherOfferCardItemMobile: React.FC<IVoucherOfferCardItemMobile> = ({ offer, poiImage, poiName, optedIn, isMyOffer, isLoadingOffer, optClicked, cardClicked, redeemClicked }) => {
   const [show, setShow] = useState<boolean>(false);
 
-  const ref = React.createRef<HTMLButtonElement>();
+  const ref = React.useRef<HTMLButtonElement>(null);
 
   moment.locale(window.twindow.langCode);
+
+  const forceRepaint = () => {
+    if (ref.current) {
+      ref.current.style.display = 'none';
+      setTimeout(() => {
+        if (ref.current) {
+          ref.current.style.display = 'block';
+        }
+      }, 0);
+    }
+  };
 
   const claimButton = useMemo(
     () => (
       <CustomPopover
         ref={ref}
         show={show}
-        positions={['bottom', 'left', 'right']}
-        content={<OfferAvailableDaySelect timeframe={offer.timeframe} selectedDay={(day: string) => optClicked(true, offer.id, day)} close={() => setShow(false)} />}
+        positions={['top', 'left', 'right']}
+        content={
+          <OfferAvailableDaySelect
+            timeframe={offer.timeframe}
+            selectedDay={(day: string) => {
+              optClicked(true, offer.id, day);
+              forceRepaint();
+            }}
+            close={() => setShow(false)}
+          />
+        }
         backdropClick={(e) => {
           e.stopPropagation();
           setShow(false);

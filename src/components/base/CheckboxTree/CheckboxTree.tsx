@@ -8,6 +8,7 @@ import Model from '@tripian/model';
 import { CheckboxChecked, CheckboxUnChecked } from '../Svg/Icons/Checkbox';
 import classes from './CheckboxTree.scss';
 import Checkbox from '../Checkbox/Checkbox';
+import { ChevronDown, ChevronUp } from '../Svg/Icons';
 
 interface ICheckboxTree {
   domId: string;
@@ -40,6 +41,7 @@ const CheckboxTree: React.FC<ICheckboxTree> = ({ domId, text, subOptions, style,
           {checkedParent ? <CheckboxChecked className={classes.checked} /> : <CheckboxUnChecked />}
         </span>
         <span className={classes.span2}>{text}</span>
+        {subOptions.length > 0 && <span className={classes.arrowIcon}>{checkedParent ? <ChevronUp /> : <ChevronDown />}</span>}
       </label>
 
       {checkedParent && subOptions.length > 0 ? (

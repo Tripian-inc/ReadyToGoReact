@@ -1,14 +1,16 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
-import React, { useMemo } from 'react';
-import { helper } from '@tripian/model';
-import ReactSelect, { InputActionMeta, SingleValue, MultiValue } from 'react-select';
+import React, { useMemo, useState } from 'react';
+import ReactSelect, { SingleValue, MultiValue } from 'react-select';
+import { matchSorter } from 'match-sorter';
+import Model from '@tripian/model';
 import { Distance } from '../base/Svg/Icons';
 import classes from './DestinationSelect.scss';
 
 export type RSelectOption = {
   id: number;
   label: string;
-  payload: { destinationId: number; destinationName: string; parentName: string };
+  payload: { destinationId: number; destinationName: string; coordinate: Model.Coordinate; parentName: string };
   isSelected?: boolean;
 };
 
@@ -16,23 +18,23 @@ interface IDestinationSelect {
   options: RSelectOption[];
   selectedOptionId?: number;
   onSelectedOptionChange: (selectedOption: RSelectOption) => void;
-  onInputChange?: (newValue: string, actionMeta: InputActionMeta) => void;
   placeHolder?: string;
   disabled?: boolean;
   onFocus?: () => void;
   onBlur?: () => void;
 }
 
-const DestinationSelect: React.FC<IDestinationSelect> = ({ options, selectedOptionId, onSelectedOptionChange, onInputChange, placeHolder = 'Please select', disabled = false, onFocus, onBlur }) => {
+const DestinationSelect: React.FC<IDestinationSelect> = ({ options, selectedOptionId, onSelectedOptionChange, placeHolder = 'Please select', disabled = false, onFocus, onBlur }) => {
   const selectedOption = useMemo(() => options.find((option) => option.id === selectedOptionId), [selectedOptionId, options]);
+  const [destinationSearchInput, setDestinationSearchInput] = useState<string>('');
 
   const handleChange = (newSelectedOption: MultiValue<RSelectOption> | SingleValue<RSelectOption>) => {
     onSelectedOptionChange(newSelectedOption as RSelectOption);
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  /*  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const customFilter = (option: { label: string; value: string; data: any }, searchText: string) => helper.toEngChars(option.label).toLowerCase().includes(helper.toEngChars(searchText).toLowerCase());
-
+ */
   const noOptionsMessage = (obj: { inputValue: string }) => {
     if (obj.inputValue.length > 2) {
       return <span>No Destination Found.</span>;
@@ -57,11 +59,11 @@ const DestinationSelect: React.FC<IDestinationSelect> = ({ options, selectedOpti
   return (
     <>
       <ReactSelect
-        options={options}
+        options={matchSorter(options, destinationSearchInput, { keys: ['label'] })}
         defaultValue={selectedOption}
         onChange={handleChange}
-        onInputChange={onInputChange}
-        filterOption={customFilter}
+        onInputChange={(e) => setDestinationSearchInput(e)}
+        /* filterOption={customFilter} */
         placeholder={placeHolder}
         className="destinationSelect"
         classNamePrefix="destinationSelect"

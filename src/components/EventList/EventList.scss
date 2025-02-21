@@ -1,0 +1,18 @@
+.eventList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.eventItem {
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &Selected {
+    transform: scale(1.02);
+  }
+
+  &Hover:hover {
+    transform: scale(1.01);
+  }
+}

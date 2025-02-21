@@ -4,15 +4,22 @@
 import Model, { helper } from '@tripian/model';
 import moment from 'moment';
 import React, { useMemo } from 'react';
-import DestinationSelect, { RSelectOption } from '../../DestinationSelect/DestinationSelect';
+import DestinationSelect from '../../DestinationSelect/DestinationSelect';
 import Required from '../../base/Required/Required';
 import NumberCounter from '../../base/NumberCounterNew/NumberCounter';
 import DateRangePicker from '../../DateRangePicker/DateRangePicker';
 import Button from '../../base/Button/Button';
 import classes from './FormTemplateToursAndTickets.scss';
 
+export type RSelectOption = {
+  id: number;
+  label: string;
+  payload: { destinationId: number; destinationName: string; coordinate: Model.Coordinate; parentName: string };
+  isSelected?: boolean;
+};
+
 interface IFormTemplateToursAndTickets {
-  destinations: { destinationId: number; destinationName: string; parentName: string }[];
+  destinations: { destinationId: number; destinationName: string; coordinate: Model.Coordinate; parentName: string }[];
   toursAndTicketsProfile: Model.TourAndTickets;
   setToursAndTicketsProfile: (toursAndTicketsProfile: Model.TourAndTickets) => void;
   onSubmit: () => void;
@@ -40,6 +47,8 @@ const FormTemplateToursAndTickets: React.FC<IFormTemplateToursAndTickets> = ({ t
     const newToursAndTicketsProfile = helper.deepCopy(toursAndTicketsProfile);
     newToursAndTicketsProfile.cityId = +selectedOption.id;
     newToursAndTicketsProfile.cityName = selectedOption.payload.destinationName;
+    newToursAndTicketsProfile.lat = selectedOption.payload.coordinate.lat;
+    newToursAndTicketsProfile.lng = selectedOption.payload.coordinate.lng;
     setToursAndTicketsProfile(newToursAndTicketsProfile);
   };
 
@@ -73,7 +82,7 @@ const FormTemplateToursAndTickets: React.FC<IFormTemplateToursAndTickets> = ({ t
                 {!toursAndTicketsProfile.cityId ? <Required customClassName="mb0" /> : null}
               </div>
               <div className={classes.alignStart}>
-                <DestinationSelect options={destinationOptions} selectedOptionId={toursAndTicketsProfile.cityId} onSelectedOptionChange={callbackCitySelect} placeHolder="Select destination from list" />
+                <DestinationSelect options={destinationOptions} selectedOptionId={toursAndTicketsProfile.cityId} onSelectedOptionChange={callbackCitySelect} placeHolder={t('trips.createNewTrip.form.destination.city.placeholder')} />
               </div>
             </div>
             <div className="col col12 col5-m">

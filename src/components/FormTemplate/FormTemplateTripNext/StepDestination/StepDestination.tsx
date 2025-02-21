@@ -12,7 +12,7 @@ import classes from './StepDestination.scss';
 
 export interface StepDestinationProps {
   tripProfile: Model.TripProfile;
-  destinations: { destinationId: number; destinationName: string; parentName: string }[];
+  destinations: { destinationId: number; destinationName: string; coordinate: Model.Coordinate; parentName: string }[];
   setTripProfile: (tripProfile: Model.TripProfile) => void;
   isTripEdit: boolean;
   destinationTips: { iconUrl: string; title: string; description: string }[];

@@ -6,6 +6,7 @@ import Button from '../base/Button/Button';
 
 interface IRefCard {
   image: string;
+  imageText?: string;
   title: string;
   butonText: string;
   subContext?: string;
@@ -13,10 +14,11 @@ interface IRefCard {
   children: React.ReactNode;
 }
 
-const RefCard: React.FC<IRefCard> = ({ image, title, butonText, subContext, clicked, children }) => (
+const RefCard: React.FC<IRefCard> = ({ image, imageText, title, butonText, subContext, clicked, children }) => (
   <div className={classes.refCard} onClick={() => clicked()} role="button" onKeyDown={() => {}} tabIndex={0}>
     <div className={classes.refCardImgDiv}>
       <img className={classes.refCardImg} src={image} alt="" referrerPolicy="no-referrer" />
+      {imageText && <div className={classes.refCardImageText}>{imageText}</div>}
     </div>
     <div className={classes.refCardContent}>
       <div className={classes.refCardTitle}>{title}</div>
@@ -26,7 +28,15 @@ const RefCard: React.FC<IRefCard> = ({ image, title, butonText, subContext, clic
       </div>
       <div className={classes.refCardButton}>
         <div className="hide-s">
-          <Button text={butonText} onClick={() => clicked()} color="primary" size="small" />
+          <Button
+            text={butonText}
+            onClick={(e) => {
+              e.stopPropagation();
+              clicked();
+            }}
+            color="primary"
+            size="small"
+          />
         </div>
         <div className="hide-m">
           <div onKeyDown={() => {}} role="button" tabIndex={0} className={classes.bookingButton} onClick={() => clicked()} />

@@ -11,7 +11,7 @@ interface IModalFull {
 
 const ModalFull: React.FC<IModalFull> = ({ show, style = {}, className = '', children }) => {
   const newStyle = { ...style };
-  newStyle.transform = show ? 'translate(-50%, -50%)' : 'translateY(-140vh)';
+  newStyle.transform = show ? 'translate(-50%, -50%)' : 'translateY(-200vh)';
   newStyle.opacity = show ? '1' : '0';
 
   return (

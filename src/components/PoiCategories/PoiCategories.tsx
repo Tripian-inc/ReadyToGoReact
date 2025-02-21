@@ -6,30 +6,38 @@ import RSelectMultiCustom from '../base/RSelectMultiCustom/RSelectMultiCustom';
 import classes from './PoiCategories.scss';
 
 interface IPoiCategories {
-  selectedPoiCategoryIndexes: number[];
-  setSelectedPoiCategoryIndexes: (newIndex: number[]) => void;
+  categoryGroups: Model.PoiCategoryGroup[];
+  selectedPoiCategoryGroups: Model.PoiCategoryGroup[];
+  setSelectedPoiCategoryGroups: (newPoiCategoryGroups: Model.PoiCategoryGroup[]) => void;
   t: (value: Model.TranslationKey) => string;
 }
 
-const PoiCategories: React.FC<IPoiCategories> = ({ selectedPoiCategoryIndexes, setSelectedPoiCategoryIndexes, t }) => {
+const PoiCategories: React.FC<IPoiCategories> = ({ categoryGroups, selectedPoiCategoryGroups, setSelectedPoiCategoryGroups, t }) => {
   const poiCategoryOptions = useMemo(() => {
-    const options = [
-      { value: (0).toString(), label: t('trips.myTrips.exploreMore.categories.attractions') },
-      { value: (1).toString(), label: t('trips.myTrips.exploreMore.categories.restaurants') },
-      { value: (2).toString(), label: t('trips.myTrips.exploreMore.categories.cafes') },
-      { value: (3).toString(), label: t('trips.myTrips.exploreMore.categories.nightlife') },
-      { value: (4).toString(), label: t('trips.myTrips.exploreMore.categories.shopping') },
-    ];
+    const options = categoryGroups.map((categoryOption: Model.PoiCategoryGroup) => ({
+      value: categoryOption.categories.map((category: Model.PoiCategory) => category.id).join(','),
+      label: categoryOption.name,
+    }));
     return options;
-  }, [t]);
+  }, [categoryGroups]);
 
-  const selectedOptionValues: string[] = selectedPoiCategoryIndexes.map((x) => x.toString());
+  const selectedValues: string[] = selectedPoiCategoryGroups.map((x) => x.categories.map((category: Model.PoiCategory) => category.id).join(','));
 
-  const callBackRSelect = (selectedOptions: RSelectOption[]) => setSelectedPoiCategoryIndexes(selectedOptions.map((selectedOption) => Number(selectedOption.value)));
+  const callBackRSelect = (selectedOptions: RSelectOption[]) =>
+    setSelectedPoiCategoryGroups(
+      selectedOptions.map((selectedOption: RSelectOption) => ({
+        name: selectedOption.label,
+        categories: selectedOption.value.split(',').map((item) => ({
+          id: parseInt(item.trim(), 10),
+          name: '',
+          isCustom: false,
+        })),
+      })),
+    );
 
   return (
     <div className={classes.poiCategories}>
-      <RSelectMultiCustom options={poiCategoryOptions} selectedOptionValues={selectedOptionValues} onSelectedOptionChange={callBackRSelect} placeHolder={t('trips.myTrips.exploreMore.selectCategory')} isSelectAll />
+      <RSelectMultiCustom options={poiCategoryOptions} selectedOptionValues={selectedValues} onSelectedOptionChange={callBackRSelect} placeHolder={t('trips.myTrips.exploreMore.selectCategory')} isSelectAll />
     </div>
   );
 };

@@ -21,7 +21,7 @@ const GygTourShoppingForm: React.FC<IGygTourShoppingForm> = ({ user, clicked, go
     user: {
       first_name: user?.firstName || '',
       last_name: user?.lastName || '',
-      email: user?.email || '',
+      email: user?.email?.includes('light-tripian.com') ? '' : user?.email || '',
       country_code: '',
       phone_number: '',
       address_line_1: '',

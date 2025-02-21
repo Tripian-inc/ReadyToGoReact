@@ -205,6 +205,12 @@ const FormTemplateProfile: React.FC<IFormTemplateProfile> = ({ user, profileQues
               onchanged={(date: moment.Moment | null) => {
                 if (date) dateOfBirthChange(date);
               }}
+              isDayBlocked={(date: moment.Moment | null) => {
+                if (!date) return false;
+                const today = moment();
+                const twelveYearsAgo = today.clone().subtract(7, 'years');
+                return date.isAfter(today) || date.isAfter(twelveYearsAgo);
+              }}
               openDirection="up"
               showMonthSelection
             />

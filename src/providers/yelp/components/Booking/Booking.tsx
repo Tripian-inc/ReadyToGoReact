@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 /* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable no-console */
 import React, { useState, useEffect } from 'react';
@@ -21,9 +22,10 @@ interface IBooking {
   getHoldIt: (hold: Providers.Yelp.HoldRequest) => Promise<Providers.Yelp.Hold>;
   reservationRequest: (reservation: Providers.Yelp.ReservationRequest) => Promise<Providers.Yelp.Reservation>;
   bookingCallback: (provider: string, poi: Model.Poi, bookingDetails: Providers.Yelp.ReservationRequest, response?: Providers.Yelp.Reservation) => void;
+  t: (value: Model.TranslationKey) => string;
 }
 
-const Booking: React.FC<IBooking> = ({ businessId, poi, stepDate, stepHour, userProfileBooking, reservationEditData, getBusinessInfo, openingsRequest, getHoldIt, reservationRequest, bookingCallback }) => {
+const Booking: React.FC<IBooking> = ({ businessId, poi, stepDate, stepHour, userProfileBooking, reservationEditData, getBusinessInfo, openingsRequest, getHoldIt, reservationRequest, bookingCallback, t }) => {
   moment.locale(window.twindow.langCode);
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [businessInfo, setBusinessInfo] = useState<Providers.Yelp.Business>();
@@ -55,7 +57,7 @@ const Booking: React.FC<IBooking> = ({ businessId, poi, stepDate, stepHour, user
           setBusinessInfo(business);
         })
         .catch((err) => {
-          setResponseErrorMessage(err.error.description);
+          setResponseErrorMessage(err.error);
         })
         .finally(() => {
           setLoading(false);
@@ -107,7 +109,7 @@ const Booking: React.FC<IBooking> = ({ businessId, poi, stepDate, stepHour, user
       })
       .catch((err) => {
         setReservation(newReservation);
-        setResponseErrorMessage(err.error.description);
+        setResponseErrorMessage(err.error);
       })
       .then(() => {
         setLoading(false);
@@ -127,7 +129,7 @@ const Booking: React.FC<IBooking> = ({ businessId, poi, stepDate, stepHour, user
       })
       .catch((err) => {
         newReservation.holdId = '';
-        setResponseErrorMessage(err.error.description);
+        setResponseErrorMessage(err.error);
         setReservation(newReservation);
       })
       .then(() => {
@@ -151,6 +153,7 @@ const Booking: React.FC<IBooking> = ({ businessId, poi, stepDate, stepHour, user
         bookingCallback(Model.PROVIDER_NAME.YELP, poi, newReservation, response);
       })
       .catch((err) => {
+        console.log('err', err);
         setResponseErrorMessage(err.error.description);
         bookingCallback(Model.PROVIDER_NAME.YELP, poi, newReservation);
       })
@@ -169,13 +172,13 @@ const Booking: React.FC<IBooking> = ({ businessId, poi, stepDate, stepHour, user
       <div className="row center">
         {!responseSuccessMessage ? (
           <>
-            <h3 className="col col12 mb0">Welcome To {poi.name}</h3>
+            <h3 className="col col12 mb0">{poi.name}</h3>
             <div className="col col12 my5">
-              <TableSearch tableSearchCallback={tableSearchCallback} stepDate={stepDate} defaultHour={reservation.time.length > 0 ? reservation.time : stepHour || '14:00'} covers={reservation.covers} />
+              <TableSearch tableSearchCallback={tableSearchCallback} stepDate={stepDate} defaultHour={reservation.time.length > 0 ? reservation.time : stepHour || '14:00'} covers={reservation.covers} t={t} />
             </div>
             {openingList.reservation_times.length > 0 ? (
               <div className="col col12 mb0">
-                <OpeningsSelection openingTimes={openingList.reservation_times.find((reservationtime) => reservationtime.date === reservation.date)?.times || []} clicked={openingsSelectionCallback} bookingHour={reservation.time} />
+                <OpeningsSelection openingTimes={openingList.reservation_times.find((reservationtime) => reservationtime.date === reservation.date)?.times || []} clicked={openingsSelectionCallback} bookingHour={reservation.time} t={t} />
               </div>
             ) : null}
             {reservation.holdId ? (
@@ -188,6 +191,7 @@ const Booking: React.FC<IBooking> = ({ businessId, poi, stepDate, stepHour, user
                     phone: reservation.phone,
                   }}
                   openingsFormCallback={openingsFormCallback}
+                  t={t}
                 />
               </div>
             ) : null}

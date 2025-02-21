@@ -6,6 +6,7 @@ import VoucherOfferCardItem from './VoucherOfferCardItem/VoucherOfferCardItem';
 
 interface IOfferCard {
   poiName?: string;
+  redeemText?: string;
   planDate?: string;
   offer: Model.Offer;
   optedIn: boolean;
@@ -16,7 +17,7 @@ interface IOfferCard {
   redeemClicked?: () => void;
 }
 
-const OfferCard: React.FC<IOfferCard> = ({ poiName, /* planDate, */ offer, optedIn, isMyOffer, optClicked, cardClicked, isLoadingOffer, redeemClicked }) => {
+const OfferCard: React.FC<IOfferCard> = ({ poiName, redeemText, /* planDate, */ offer, optedIn, isMyOffer, optClicked, cardClicked, isLoadingOffer, redeemClicked }) => {
   const PoiImage = offer.imageUrl.includes('Smbt') ? helper.imgUrl(`${offer.imageUrl}`, 256, 256, 'Smbt') : helper.imgUrl(`${offer.imageUrl}`, 256, 256);
 
   /* const planDateTimeNowOffer = useMemo(() => {
@@ -38,10 +39,8 @@ const OfferCard: React.FC<IOfferCard> = ({ poiName, /* planDate, */ offer, opted
       <VoucherOfferCardItem offer={offer} poiName={poiName} optClicked={optClicked} cardClicked={cardClicked} isLoadingOffer={isLoadingOffer} optedIn={optedIn} poiImage={PoiImage} isMyOffer={isMyOffer} redeemClicked={redeemClicked ?? (() => {})} />
     );
   }
-  return <DefaultOfferCardItem poiName={poiName} optClicked={optClicked} isLoadingOffer={isLoadingOffer} offer={offer} optedIn={optedIn} poiImage={PoiImage} isMyOffer={isMyOffer} />;
+  return <DefaultOfferCardItem poiName={poiName} redeemText={redeemText} optClicked={optClicked} isLoadingOffer={isLoadingOffer} offer={offer} optedIn={optedIn} poiImage={PoiImage} isMyOffer={isMyOffer} redeemClicked={redeemClicked ?? (() => {})} />;
   // }
-
-  return null;
 };
 
 export default OfferCard;

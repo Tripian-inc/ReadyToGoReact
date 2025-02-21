@@ -2,6 +2,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import React, { useState } from 'react';
 import moment from 'moment';
+import Model from '@tripian/model';
 import DatePicker from '../../../../components/DatePicker/DatePicker';
 import Dropdown from '../../../../components/base/Dropdown/Dropdown';
 import Button from '../../../../components/base/Button/Button';
@@ -12,9 +13,10 @@ interface ITableSearch {
   stepDate: string;
   covers: number;
   defaultHour: string;
+  t: (value: Model.TranslationKey) => string;
 }
 
-const TableSearch: React.FC<ITableSearch> = ({ tableSearchCallback, stepDate, covers, defaultHour }) => {
+const TableSearch: React.FC<ITableSearch> = ({ tableSearchCallback, stepDate, covers, defaultHour, t }) => {
   moment.locale(window.twindow.langCode);
 
   const [searchState, setSearchState] = useState<{ date: string; time: string; covers: number }>({
@@ -50,7 +52,7 @@ const TableSearch: React.FC<ITableSearch> = ({ tableSearchCallback, stepDate, co
       </div>
       <div className="col col6 col3-m">
         <Dropdown
-          options={peopleCountOptions}
+          options={peopleCountOptions(t)}
           defaultValue={searchState.covers}
           selectChange={(value) => {
             const newSearchState = { ...searchState };
@@ -62,7 +64,7 @@ const TableSearch: React.FC<ITableSearch> = ({ tableSearchCallback, stepDate, co
       <div className="col col12 col3-m center">
         <Button
           color="primary"
-          text="Find a Table"
+          text={t('reservation.findATable')}
           onClick={() => {
             tableSearchCallback(searchState.date, searchState.time, searchState.covers);
           }}

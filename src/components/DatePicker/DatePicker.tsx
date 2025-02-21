@@ -13,9 +13,10 @@ interface IDatePickerTemplate {
   endDate?: moment.Moment;
   openDirection?: 'down' | 'up';
   showMonthSelection?: boolean;
+  isDayBlocked?: ((date: moment.Moment | null) => boolean) | undefined;
 }
 
-const DatePicker: React.FC<IDatePickerTemplate> = ({ currentDate, onchanged, startDate, endDate, openDirection = 'down', showMonthSelection = false }) => {
+const DatePicker: React.FC<IDatePickerTemplate> = ({ currentDate, onchanged, startDate, endDate, openDirection = 'down', showMonthSelection = false, isDayBlocked }) => {
   moment.locale(window.twindow.langCode);
 
   const [date, setDate] = useState<moment.Moment | null>(currentDate);
@@ -78,6 +79,7 @@ const DatePicker: React.FC<IDatePickerTemplate> = ({ currentDate, onchanged, sta
         }
         return false;
       }}
+      isDayBlocked={isDayBlocked}
       placeholder="Select a date"
     />
   );

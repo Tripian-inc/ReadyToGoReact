@@ -26,10 +26,11 @@ interface IFormTemplateLogin {
   };
   showRegister?: boolean;
   signUpButtonCallBack: () => void;
+  customQuery?: string;
   t: (value: Model.TranslationKey) => string;
 }
 
-const FormTemplateLogin: React.FC<IFormTemplateLogin> = ({ login, successLogin, reCaptchaSiteKey, showCaptcha = true, forgotPassword, socialLoginConfigs, showRegister, signUpButtonCallBack, t }) => {
+const FormTemplateLogin: React.FC<IFormTemplateLogin> = ({ login, successLogin, reCaptchaSiteKey, showCaptcha = true, forgotPassword, socialLoginConfigs, showRegister, signUpButtonCallBack, customQuery, t }) => {
   const [error, setError] = useState(undefined);
   const [loading, setLoading] = useState(false);
   const [recaptchaVerified, setRecaptchaVerified] = useState<boolean>();
@@ -163,7 +164,7 @@ const FormTemplateLogin: React.FC<IFormTemplateLogin> = ({ login, successLogin, 
           <div className="center px2 mt4 mb6">
             <span className={classes.orLoginWith}>{t('auth.login.or')}</span>
           </div>
-          <SocialLogin configs={socialLoginConfigs} t={t} />
+          <SocialLogin configs={socialLoginConfigs} customQuery={customQuery} t={t} />
         </>
       )}
 

@@ -2,19 +2,27 @@
   display: flex;
   flex-direction: column;
   font-size: 0.9rem;
+  align-items: flex-start;
 
   .readMoreLessButton {
-    background: var(--background-color);
-    border-radius: 0.25rem;
-    padding: 0.3rem;
-    border: 1px solid #8f8f8f;
-    margin-left: 0.25rem;
+    // background: var(--background-color);
+    // border-radius: 0.25rem;
+    // padding: 0.3rem;
+    // border: 1px solid #8f8f8f;
+    // margin-left: 0.25rem;
     font-size: 0.875rem;
     cursor: pointer;
-    display: flex;
-    margin: 0.5rem auto 0;
-    min-width: 6rem;
-    justify-content: center;
+    // display: flex;
+    // margin: 0.5rem auto 0;
+    // min-width: 6rem;
+    // justify-content: center;
+    color: var(--text-primary-color);
+    margin-top: 0.5rem;
+    color: #2564eb;
+
+    &:hover {
+     text-decoration: underline; 
+    }
   }
 
   .readMoreLessDesc {

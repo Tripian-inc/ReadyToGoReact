@@ -104,11 +104,12 @@ const FormTemplateTripNext: React.FC<IFormTemplateTripNext> = ({
       break;
   }
 
-  const destinations: { destinationId: number; destinationName: string; parentName: string }[] = useMemo(() => {
+  const destinations: { destinationId: number; destinationName: string; coordinate: Model.Coordinate; parentName: string }[] = useMemo(() => {
     return cities.map((city) => {
       const destination = {
         destinationId: city.id,
         destinationName: city.name,
+        coordinate: city.coordinate,
         parentName: city.parentLocations.length === 0 ? city.country.name : `${city.parentLocations.map((parent) => parent.name).join(', ')}, ${city.country.name}`,
       };
 

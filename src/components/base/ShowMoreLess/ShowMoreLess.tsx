@@ -23,7 +23,7 @@ const ShowMoreLess: React.FC<IShowMoreLess> = ({ items, defaultItemCount, t }) =
   };
 
   return (
-    <div>
+    <div className={classes.showMoreLess}>
       {items.length > 0 &&
         items.slice(0, itemsCount).map((item, i) => (
           <span key={`${item}-${i}`} className={classes.tag}>
@@ -34,11 +34,17 @@ const ShowMoreLess: React.FC<IShowMoreLess> = ({ items, defaultItemCount, t }) =
         <>
           {itemsCount === defaultItemCount ? (
             <button className={classes.showMoreButton} type="button" onClick={showMoreItem}>
-              +{items.length - itemsCount} {t('trips.myTrips.itinerary.step.poi.tags.more')}
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1">
+                <path d="M5 12h14" />
+                <path d="M12 5v14" />
+              </svg>
+              {items.length - itemsCount} {t('trips.myTrips.itinerary.step.poi.tags.more')}
             </button>
           ) : (
-            <button className={classes.showLessButton} type="button" onClick={showLessItem}>
-              <ArrowUp className={classes.lessArrowIcon} />
+            <button className={classes.showMoreButton} type="button" onClick={showLessItem}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4 mr-1">
+                <path d="M5 12h14" />
+              </svg>
               <span className={classes.lessButtonText}>{t('trips.myTrips.itinerary.step.poi.tags.less')}</span>
             </button>
           )}

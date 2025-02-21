@@ -16,7 +16,7 @@ const OfferAvailableDaySelect: React.FC<IOfferDaySelect> = ({ timeframe, selecte
   const [date, setDate] = useState<moment.Moment | null>();
   const [focus, setFocus] = useState<boolean>(false);
 
-  moment.locale(window.twindow.langCode);
+  moment.locale(window.twindow.langCode || 'en');
 
   const offerAvailableDays = useMemo(() => {
     if (moment(timeframe.end).isBefore(moment(timeframe.start))) {
@@ -39,7 +39,6 @@ const OfferAvailableDaySelect: React.FC<IOfferDaySelect> = ({ timeframe, selecte
   }, [timeframe]);
 
   const isBlocked = useCallback((day: moment.Moment) => !offerAvailableDays.some((availableDay) => day.isSame(moment(availableDay, 'YYYY-MM-DD'), 'day')), [offerAvailableDays]);
-
   return (
     <div className="row m0">
       <div className={classes.offerDaySelectModal}>
@@ -51,7 +50,8 @@ const OfferAvailableDaySelect: React.FC<IOfferDaySelect> = ({ timeframe, selecte
             if (focused) setFocus(focused);
           }}
           onDateChange={(selected) => {
-            setDate(selected);
+            const parsedDate = selected ? moment(selected) : null;
+            setDate(parsedDate);
           }}
           numberOfMonths={1}
           isDayBlocked={isBlocked}

@@ -60,6 +60,26 @@
       letter-spacing: 0.03125rem;
     }
 
+    .tripName {
+      color: #fff;
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      max-width: 100%;
+      padding: 0.5rem;
+      text-shadow: 0.0625rem 0.0625rem 0.0625rem black;
+      letter-spacing: 0.03125rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+
+      svg {
+        filter: drop-shadow(2px 2px 2px black);
+      }
+    }
+
     .howManyDays {
       color: #fff;
       position: absolute;

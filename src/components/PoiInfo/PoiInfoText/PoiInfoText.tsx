@@ -31,7 +31,10 @@ enum POI_CARD_ACTION {
 
 interface IPoiInfoText {
   poi: Model.Poi;
-  hideButtons: boolean;
+  hideFavoriteIcon: boolean;
+  hidePartOfDay?: boolean;
+  hideFeatures?: boolean;
+  hideCuisine?: boolean;
   favorite: boolean;
   favoriteLoading: boolean;
   favoriteClick: (favorite: boolean) => void;
@@ -45,13 +48,19 @@ interface IPoiInfoText {
   reservationUrl?: string;
   hideBookingButton: boolean;
   bookingButtonClick?: (productId: string, poi: Model.Poi) => void;
+  tourTicketButtonClick?: () => void;
+  tourTicketProductsLoading?: boolean;
+  showTourTicketButton?: boolean;
   RESTAURANT_RESERVATION_PROVIDER_IDS: Model.PROVIDER_ID[];
   t: (value: Model.TranslationKey) => string;
 }
 
 const PoiInfoText: React.FC<IPoiInfoText> = ({
   poi,
-  hideButtons,
+  hideFavoriteIcon,
+  hidePartOfDay,
+  hideFeatures,
+  hideCuisine,
   favorite,
   favoriteLoading,
   favoriteClick,
@@ -64,6 +73,9 @@ const PoiInfoText: React.FC<IPoiInfoText> = ({
   reservationUrl,
   hideBookingButton = false,
   bookingButtonClick,
+  tourTicketButtonClick,
+  tourTicketProductsLoading,
+  showTourTicketButton = false,
   RESTAURANT_RESERVATION_PROVIDER_IDS,
   t,
 }) => {
@@ -178,7 +190,7 @@ const PoiInfoText: React.FC<IPoiInfoText> = ({
       />
     );
   }
-  const poiFavorite = !hideButtons ? (
+  const poiFavorite = !hideFavoriteIcon ? (
     <div className={classes.favorite}>
       <div className={classes.favoriteButton}>{favoriteLoading ? <PreLoading color="#000" size="small" /> : favoriteIcon}</div>
     </div>
@@ -197,7 +209,7 @@ const PoiInfoText: React.FC<IPoiInfoText> = ({
         .join(', ')} ${t('trips.myTrips.itinerary.step.poi.and')} ${dayNumbers[dayNumbers.length - 1]}`;
     else header = `${header} ${dayNumbers[0]}`;
 
-    partOfDay = (
+    partOfDay = !hidePartOfDay && (
       <PoiInfoTextRow>
         <PoiInfoTextRowHeader header={header} />
         <TapRight />
@@ -330,7 +342,7 @@ const PoiInfoText: React.FC<IPoiInfoText> = ({
       <PoiInfoTextRow border height={100}>
         <div className={classes.web}>
           <Mask className={classes.poiInfoTextIcon} />
-          <span>{poiSafetyContent}</span>
+          <span className={classes.poiSafetyText}>{poiSafetyContent}</span>
         </div>
       </PoiInfoTextRow>
     );
@@ -342,7 +354,7 @@ const PoiInfoText: React.FC<IPoiInfoText> = ({
   const cuisinesArray = poi.cuisines?.split(', ') || [];
   const uniqueCuisines: string[] = helper.removeDuplicateValues(cuisinesArray, (s1, s2) => s1 === s2);
   const poiCuisines =
-    uniqueCuisines.length > 0 ? (
+    uniqueCuisines.length > 0 && !hideCuisine ? (
       <>
         <PoiInfoTextRow border={false}>
           <PoiInfoTextRowHeader header={t('trips.myTrips.itinerary.step.poi.cuisine')} />
@@ -357,7 +369,7 @@ const PoiInfoText: React.FC<IPoiInfoText> = ({
    * Features
    */
   const poiFeatures =
-    poi.tags.length > 0 ? (
+    poi.tags.length > 0 && !hideFeatures ? (
       <>
         <PoiInfoTextRow border={false}>
           <PoiInfoTextRowHeader header={t('trips.myTrips.itinerary.step.poi.tags.title')} />
@@ -443,6 +455,11 @@ const PoiInfoText: React.FC<IPoiInfoText> = ({
           {poiAction}
           {poiFavorite}
         </div>
+        {showTourTicketButton ? (
+          <div className={classes.openTours}>
+            <Button disabled={tourTicketProductsLoading} text={t('trips.myTrips.itinerary.step.poi.tourTicket.buttonText')} color="primary" onClick={() => tourTicketButtonClick && tourTicketButtonClick()} />
+          </div>
+        ) : null}
         {/* {stepDayInfo} */}
         {info}
         {bookaTable}

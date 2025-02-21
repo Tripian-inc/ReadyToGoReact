@@ -9,4 +9,5 @@ declare module '*.scss' {
 }
 declare module '*.png';
 declare module '*.svg';
+declare module '*.webp';
 declare module 'external-svg-loader';

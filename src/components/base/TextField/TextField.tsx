@@ -16,10 +16,11 @@ interface ITextField {
   disabled?: boolean;
   placeholder?: string;
   autocomplete?: string;
+  required?: boolean;
   children?: React.ReactNode;
 }
 
-const TextField: React.FC<ITextField> = ({ id, className, name, value, size = 'default', style = {}, onChange, onKeyDown, type = 'text', min, max, disabled, placeholder, autocomplete, children }) => {
+const TextField: React.FC<ITextField> = ({ id, className, name, value, size = 'default', style = {}, onChange, onKeyDown, type = 'text', min, max, disabled, placeholder, autocomplete, required, children }) => {
   const inputClasses = [className, classes.inputBase];
   if (size === 'small') {
     inputClasses.push(classes.small);
@@ -30,7 +31,21 @@ const TextField: React.FC<ITextField> = ({ id, className, name, value, size = 'd
   }
   return (
     <div className={classes.inputBaseRoot} style={{ ...style }}>
-      <input id={id} autoComplete={autocomplete} type={type} placeholder={placeholder} onKeyDown={onKeyDown} name={name} min={min} max={max} disabled={disabled} className={inputClasses.join(' ')} value={value} onChange={onChange} />
+      <input
+        id={id}
+        autoComplete={autocomplete}
+        type={type}
+        placeholder={placeholder}
+        onKeyDown={onKeyDown}
+        name={name}
+        min={min}
+        max={max}
+        disabled={disabled}
+        className={inputClasses.join(' ')}
+        value={value}
+        onChange={onChange}
+        required={required}
+      />
       {children}
     </div>
   );

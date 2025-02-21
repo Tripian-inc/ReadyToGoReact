@@ -11,16 +11,24 @@ interface IStepInfo {
   removeStep: (stepId: number) => void;
   close: (poi: Model.Poi) => void;
   dayNumbers: number[];
-  hideRemoveStepButton?: boolean;
+  hideActionButtons?: boolean;
+  hideFavoriteIcon?: boolean;
+  hideScore?: boolean;
+  hidePartOfDay?: boolean;
+  hideFeatures?: boolean;
+  hideCuisine?: boolean;
   planDate?: string;
   bookingButtonClick?: (productId: string, poi: Model.Poi) => void;
   favoriteLoading: boolean;
   reservationUrl?: string;
   hideTours: boolean;
   hideBookingButton: boolean;
-  getTourInfo?: (productId: string) => void;
-  TOUR_PROVIDER_IDS: Model.PROVIDER_ID[];
-  TICKET_PROVIDER_IDS: Model.PROVIDER_ID[];
+  getTourInfo?: (productId: string, poi: Model.Poi) => void;
+  tourProducts: Model.BookingProduct[];
+  ticketProducts: Model.BookingProduct[];
+  tourTicketProductsLoading: boolean;
+  // TOUR_PROVIDER_IDS: Model.PROVIDER_ID[];
+  // TICKET_PROVIDER_IDS: Model.PROVIDER_ID[];
   RESTAURANT_RESERVATION_PROVIDER_IDS: Model.PROVIDER_ID[];
   myOffers: Model.Poi[];
   isLoadingOffer: (offerId: number) => boolean;
@@ -42,7 +50,12 @@ const StepInfo: React.FC<IStepInfo> = ({
   removeStep,
   close,
   dayNumbers,
-  hideRemoveStepButton,
+  hideActionButtons,
+  hideFavoriteIcon = false,
+  hideScore,
+  hidePartOfDay,
+  hideFeatures,
+  hideCuisine,
   bookingButtonClick,
   planDate,
   favoriteLoading,
@@ -50,8 +63,11 @@ const StepInfo: React.FC<IStepInfo> = ({
   hideBookingButton,
   hideTours,
   getTourInfo,
-  TOUR_PROVIDER_IDS,
-  TICKET_PROVIDER_IDS,
+  tourProducts,
+  ticketProducts,
+  tourTicketProductsLoading,
+  // TOUR_PROVIDER_IDS,
+  // TICKET_PROVIDER_IDS,
   RESTAURANT_RESERVATION_PROVIDER_IDS,
   myOffers,
   isLoadingOffer,
@@ -77,7 +93,12 @@ const StepInfo: React.FC<IStepInfo> = ({
       removeStep(step.id);
     }}
     stepOrder={step.order}
-    hideActionButtons={hideRemoveStepButton}
+    hideActionButtons={hideActionButtons}
+    hideFavoriteIcon={hideFavoriteIcon}
+    hideScore={hideScore}
+    hidePartOfDay={hidePartOfDay}
+    hideFeatures={hideFeatures}
+    hideCuisine={hideCuisine}
     bookingButtonClick={bookingButtonClick}
     planDate={planDate}
     favoriteLoading={favoriteLoading}
@@ -86,15 +107,17 @@ const StepInfo: React.FC<IStepInfo> = ({
     square={false}
     hideTours={hideTours}
     getTourInfo={getTourInfo}
-    TOUR_PROVIDER_IDS={TOUR_PROVIDER_IDS}
-    TICKET_PROVIDER_IDS={TICKET_PROVIDER_IDS}
+    tourProducts={tourProducts}
+    ticketProducts={ticketProducts}
+    tourTicketProductsLoading={tourTicketProductsLoading}
+    // TOUR_PROVIDER_IDS={TOUR_PROVIDER_IDS}
+    // TICKET_PROVIDER_IDS={TICKET_PROVIDER_IDS}
     RESTAURANT_RESERVATION_PROVIDER_IDS={RESTAURANT_RESERVATION_PROVIDER_IDS}
     myOffers={myOffers}
     isLoadingOffer={isLoadingOffer}
     offerButtonClick={offerButtonClick}
     offerCardClicked={offerCardClicked}
     hideOffers={hideOffers}
-    hideFavoriteIcon={false}
     loadingFeedback={loadingFeedback}
     feedbackSubjects={feedbackSubjects}
     sendFeedback={sendFeedback}

@@ -31,6 +31,10 @@ const MustTryPois: React.FC<IMustTryPois> = ({ pois, poiClicked, TOUR_PROVIDER_I
             hideReservationIcon={hideReservationIcon}
             hideTourTicketIcons={hideTourTicketIcons}
             hideOfferIcon={hideOfferIcon}
+            gygTourIds={[]}
+            bbTourIds={[]}
+            viatorTourIds={[]}
+            toristyTourIds={[]}
             t={t}
           />
         </li>

@@ -14,15 +14,18 @@ type Props = {
     region: string;
     baseDomain: string;
   };
+  customQuery?: string;
   t: (value: Model.TranslationKey) => string;
 };
 
-const SocialLogin: React.FC<Props> = ({ configs, t }) => (
+const SocialLogin: React.FC<Props> = ({ configs, customQuery, t }) => (
   <div className={classes.socialLoginButtons}>
     {configs.identityProviders.includes('Google') && (
       <a
         className={classes.socialLoginButton}
-        href={`https://${configs.domain}.auth.${configs.region}.amazoncognito.com/oauth2/authorize?identity_provider=Google&redirect_uri=${configs.baseDomain}/cognito-redirect&response_type=CODE&client_id=${configs.clientId}`}
+        href={`https://${configs.domain}.auth.${configs.region}.amazoncognito.com/oauth2/authorize?identity_provider=Google&redirect_uri=${configs.baseDomain}/cognito-redirect&response_type=CODE&client_id=${configs.clientId}${
+          customQuery ? `&state=${customQuery}` : ''
+        }`}
       >
         <div className={classes.socialLoginLogo}>
           <Google />
@@ -30,10 +33,13 @@ const SocialLogin: React.FC<Props> = ({ configs, t }) => (
         <span className={classes.socialLoginText}>{t('auth.login.google')}</span>
       </a>
     )}
+
     {configs.identityProviders.includes('SignInWithApple') && (
       <a
         className={classes.socialLoginButton}
-        href={`https://${configs.domain}.auth.${configs.region}.amazoncognito.com/oauth2/authorize?identity_provider=SignInWithApple&redirect_uri=${configs.baseDomain}/cognito-redirect&response_type=CODE&client_id=${configs.clientId}`}
+        href={`https://${configs.domain}.auth.${configs.region}.amazoncognito.com/oauth2/authorize?identity_provider=SignInWithApple&redirect_uri=${configs.baseDomain}/cognito-redirect&response_type=CODE&client_id=${configs.clientId}${
+          customQuery ? `&state=${customQuery}` : ''
+        }`}
       >
         <div className={classes.socialLoginLogo}>
           <Apple />
